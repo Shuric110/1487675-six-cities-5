@@ -1,9 +1,9 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 import PropTypes from "prop-types";
 import {favoritePropType} from "../../props";
 import {OFFER_TYPE_TITLES} from "../../const";
-
-const PERCENT_PER_STAR = 20;
+import {ratingToPercent} from "../../util";
 
 const FavoritesScreen = (props) => {
   const {favorites} = props;
@@ -51,7 +51,6 @@ const FavoritesScreen = (props) => {
                   <div className="favorites__places">
                     {offers.map((offer) => {
                       const {id, pictures: [placePicture], isPremium, nightlyCost, title, type, rating} = offer;
-                      const percentRating = Math.floor(rating) * PERCENT_PER_STAR;
 
                       return (
                         <article className="favorites__card place-card" key={id}>
@@ -61,9 +60,9 @@ const FavoritesScreen = (props) => {
                             </div>
                           ) : null}
                           <div className="favorites__image-wrapper place-card__image-wrapper">
-                            <a href="#">
+                            <Link to={`/offer/${id}`}>
                               <img className="place-card__image" src={placePicture} width="150" height="110" alt="Place image" />
-                            </a>
+                            </Link>
                           </div>
                           <div className="favorites__card-info place-card__info">
                             <div className="place-card__price-wrapper">
@@ -80,7 +79,7 @@ const FavoritesScreen = (props) => {
                             </div>
                             <div className="place-card__rating rating">
                               <div className="place-card__stars rating__stars">
-                                <span style={{width: `${percentRating}%`}}></span>
+                                <span style={{width: `${ratingToPercent(rating)}%`}}></span>
                                 <span className="visually-hidden">Rating</span>
                               </div>
                             </div>

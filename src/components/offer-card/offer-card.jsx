@@ -1,15 +1,13 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 import PropTypes from "prop-types";
 import {offerPropType} from "../../props";
 import {OFFER_TYPE_TITLES} from "../../const";
-
-const PERCENT_PER_STAR = 20;
+import {ratingToPercent} from "../../util";
 
 const OfferCard = (props) => {
   const {offer, onHover} = props;
-  const {pictures: [placePicture], isPremium, nightlyCost, title, type, rating} = offer;
-
-  const percentRating = Math.floor(rating) * PERCENT_PER_STAR;
+  const {id, pictures: [placePicture], isPremium, nightlyCost, title, type, rating} = offer;
 
   return (
     <article className="cities__place-card place-card" onMouseEnter={onHover}>
@@ -19,9 +17,9 @@ const OfferCard = (props) => {
         </div>
       ) : null}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
+        <Link to={`/offer/${id}`}>
           <img className="place-card__image" src={placePicture} width="260" height="200" alt="Place image" />
-        </a>
+        </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
@@ -38,7 +36,7 @@ const OfferCard = (props) => {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `${percentRating}%`}}></span>
+            <span style={{width: `${ratingToPercent(rating)}%`}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>

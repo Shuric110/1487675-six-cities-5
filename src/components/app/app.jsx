@@ -30,9 +30,14 @@ const App = (props) => {
           />
         </Route>
         <Route exact path="/offer/:id"
-          render={(routeProps) => (
-            <OfferScreen id={+routeProps.match.params.id} />
-          )}
+          render={(routeProps) => {
+            const offerId = +routeProps.match.params.id;
+            const offer = offers.find(({id}) => (id === offerId));
+
+            return (
+              <OfferScreen offer={offer} />
+            );
+          }}
         />
       </Switch>
     </BrowserRouter>
