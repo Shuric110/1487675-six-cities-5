@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import {OfferType} from "./const.js";
 
 export const reviewPropType = PropTypes.shape({
+  id: PropTypes.number.isRequired,
   authorAvatar: PropTypes.string.isRequired,
   authorName: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,

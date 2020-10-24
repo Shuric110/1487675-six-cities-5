@@ -62,7 +62,7 @@ export const makeReviews = () => {
   const reviews = [];
 
   for (let i = 0; i < reviewsCount; i++) {
-    reviews.push(makeReview(authors));
+    reviews.push(Object.assign(makeReview(authors), {id: i}));
   }
 
   return reviews;

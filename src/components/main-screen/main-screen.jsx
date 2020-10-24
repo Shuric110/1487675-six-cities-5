@@ -100,6 +100,7 @@ const MainScreen = (props) => {
             </section>
             <div className="cities__right-section">
               <GeoMap
+                className="cities__map"
                 mapCenter={mapDefaultCenter}
                 offerIcon={mapOfferIcon}
                 defaultZoom={mapDefaultZoom}

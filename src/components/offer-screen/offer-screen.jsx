@@ -1,10 +1,13 @@
 import React from "react";
-import {OFFER_TYPE_TITLES} from "../../const";
+import PropTypes from "prop-types";
+import ReviewsList from "../reviews-list/reviews-list";
+import GeoMap from "../geo-map/geo-map";
+import {ratingToPercent} from "../../util";
 import {offerPropType} from "../../props";
-import {ratingToPercent, formatReviewDate, formatDateAsISO} from "../../util";
-import ReviewForm from "../review-form/review-form";
+import {OFFER_TYPE_TITLES, mapOfferIcon, mapDefaultZoom, mapDefaultCenter} from "../../const";
 
 const OfferScreen = (props) => {
+  const {nearestOffers, offer} = props;
   const {
     pictures, isPremium, nightlyCost, title, type, rating, description, bedrooms, maxAdults, features,
     host: {
@@ -13,7 +16,7 @@ const OfferScreen = (props) => {
       isSuper: isHostSuper
     },
     reviews
-  } = props.offer;
+  } = offer;
 
   return (
     <div className="page">
@@ -122,42 +125,18 @@ const OfferScreen = (props) => {
                   ))}
                 </div>
               </div>
-              <section className="property__reviews reviews">
-                <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
-                <ul className="reviews__list">
-                  {reviews.map(({authorAvatar, authorName, rating: reviewRating, date, text}, idx) => (
-                    <li className="reviews__item" key={idx}>
-                      <div className="reviews__user user">
-                        <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                          <img className="reviews__avatar user__avatar" src={authorAvatar} width="54" height="54" alt="Reviews avatar" />
-                        </div>
-                        <span className="reviews__user-name">
-                          {authorName}
-                        </span>
-                      </div>
-                      <div className="reviews__info">
-                        <div className="reviews__rating rating">
-                          <div className="reviews__stars rating__stars">
-                            <span style={{width: `${ratingToPercent(reviewRating)}%`}}></span>
-                            <span className="visually-hidden">Rating</span>
-                          </div>
-                        </div>
-                        <p className="reviews__text">
-                          {text}
-                        </p>
-                        <time className="reviews__time" dateTime={formatDateAsISO(date)}>{formatReviewDate(date)}</time>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-
-                <ReviewForm
-                  onFormSubmit={() => null}
-                />
-              </section>
+              <ReviewsList
+                reviews={reviews}
+              />
             </div>
           </div>
-          <section className="property__map map"></section>
+          <GeoMap
+            className="property__map"
+            mapCenter={mapDefaultCenter}
+            offerIcon={mapOfferIcon}
+            defaultZoom={mapDefaultZoom}
+            offers={nearestOffers}
+          />
         </section>
         <div className="container">
           <section className="near-places places">
@@ -267,7 +246,8 @@ const OfferScreen = (props) => {
 };
 
 OfferScreen.propTypes = {
-  offer: offerPropType.isRequired
+  offer: offerPropType.isRequired,
+  nearestOffers: PropTypes.arrayOf(offerPropType.isRequired).isRequired,
 };
 
 export default OfferScreen;

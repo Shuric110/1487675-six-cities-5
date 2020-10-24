@@ -56,15 +56,18 @@ export default class GeoMap extends PureComponent {
   }
 
   render() {
+    const {className} = this.props;
+
     return (
       <section
-        className="cities__map"
+        className={`${className} map`}
         ref={this._mapContainerRef}
       />);
   }
 }
 
 GeoMap.propTypes = {
+  className: PropTypes.string.isRequired,
   mapCenter: PropTypes.shape({
     latitude: PropTypes.number.isRequired,
     longitude: PropTypes.number.isRequired,

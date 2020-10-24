@@ -13,7 +13,7 @@ export const OFFER_TYPE_TITLES = {
 };
 
 export const mapOfferIcon = {
-  url: `img/pin.svg`,
+  url: `/img/pin.svg`,
   width: 27,
   height: 39,
   anchorLeft: 14,

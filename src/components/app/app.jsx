@@ -35,7 +35,10 @@ const App = (props) => {
             const offer = offers.find(({id}) => (id === offerId));
 
             return (
-              <OfferScreen offer={offer} />
+              <OfferScreen
+                offer={offer}
+                nearestOffers={offers.slice(0, 3)}
+              />
             );
           }}
         />
