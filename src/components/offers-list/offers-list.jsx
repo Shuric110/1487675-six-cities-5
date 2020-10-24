@@ -19,11 +19,14 @@ export default class OffersList extends PureComponent {
   }
 
   render() {
+    const {listClassName, itemClassName, offers} = this.props;
+
     return (
-      <div className="cities__places-list places__list tabs__content">
-        {this.props.offers.map((offer) => (
+      <div className={`${listClassName} places__list tabs__content`}>
+        {offers.map((offer) => (
           <OfferCard
             key={offer.id}
+            itemClassName={itemClassName}
             offer={offer}
             onHover={this.handleOfferHover}
           />
@@ -34,5 +37,7 @@ export default class OffersList extends PureComponent {
 }
 
 OffersList.propTypes = {
+  listClassName: PropTypes.string.isRequired,
+  itemClassName: PropTypes.string.isRequired,
   offers: PropTypes.arrayOf(offerPropType.isRequired).isRequired
 };

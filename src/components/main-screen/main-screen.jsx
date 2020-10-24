@@ -94,6 +94,8 @@ const MainScreen = (props) => {
               </form>
 
               <OffersList
+                listClassName="cities__places-list"
+                itemClassName="cities__place-card"
                 offers={offers}
               />
 
