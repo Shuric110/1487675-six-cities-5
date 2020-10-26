@@ -1,9 +1,11 @@
+import CITIES from "./cities";
 import {makeReviews} from "./review";
 import {OfferType} from "../const";
 
 export default [
   {
     id: 1,
+    city: CITIES[3],
     pictures: [
       `/img/apartment-01.jpg`,
       `/img/room.jpg`,
@@ -47,6 +49,7 @@ export default [
 
   {
     id: 2,
+    city: CITIES[3],
     pictures: [
       `/img/room.jpg`,
       `/img/apartment-01.jpg`,
@@ -83,6 +86,7 @@ export default [
 
   {
     id: 3,
+    city: CITIES[3],
     pictures: [
       `/img/apartment-02.jpg`,
       `/img/apartment-01.jpg`,
@@ -123,6 +127,51 @@ export default [
 
   {
     id: 4,
+    city: CITIES[3],
+    pictures: [
+      `/img/apartment-02.jpg`,
+      `/img/apartment-01.jpg`,
+      `/img/room.jpg`,
+      `/img/apartment-03.jpg`,
+      `/img/studio-01.jpg`,
+      `/img/apartment-01.jpg`,
+    ],
+    coordinates: {
+      latitude: 52.3809553943508,
+      longitude: 4.939309666406198
+    },
+    isPremium: true,
+    nightlyCost: 180,
+    title: `Nice, cozy, warm big bed apartment`,
+    type: OfferType.APARTMENT,
+    rating: 5,
+    description: `Well located within the famous Canal Belt and a short walk from Dam square, Leidse square, Rembrandt square and many well-known museums.
+                  Whether you’re in Amsterdam for business or leisure, it is an excellent choice to explore this lively and vibrant city.`,
+    bedrooms: 2,
+    maxAdults: 4,
+    features: [
+      `Wi-Fi`,
+      `Washing machine`,
+      `Towels`,
+      `Heating`,
+      `Coffee machine`,
+      `Baby seat`,
+      `Kitchen`,
+      `Dishwasher`,
+      `Cable TV`,
+      `Fridge`
+    ],
+    host: {
+      name: `Max`,
+      avatar: `/img/avatar-max.jpg`,
+      isSuper: false
+    },
+    reviews: makeReviews()
+  },
+
+  {
+    id: 5,
+    city: CITIES[0],
     pictures: [
       `/img/apartment-02.jpg`,
       `/img/apartment-01.jpg`,
