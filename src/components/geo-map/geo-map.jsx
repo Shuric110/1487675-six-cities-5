@@ -43,6 +43,8 @@ class GeoMap extends PureComponent {
 
     this._mapContainerRef = createRef();
     this._markers = {};
+    this._activeMarker = null;
+    this._activeMarkerId = null;
   }
 
   componentDidMount() {
@@ -70,6 +72,9 @@ class GeoMap extends PureComponent {
   }
 
   componentWillUnmount() {
+    this._markers = {};
+    this._activeMarker = null;
+    this._activeMarkerId = null;
     this._map.remove();
   }
 
@@ -105,6 +110,14 @@ class GeoMap extends PureComponent {
     });
 
     this._markers = newMarkers;
+
+    if (this._activeMarkerId !== offer.id) {
+      if (this._activeMarker) {
+
+      }
+
+      if ()
+    }
   }
 
   render() {
