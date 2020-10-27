@@ -6,11 +6,12 @@ import {OFFER_TYPE_TITLES} from "../../const";
 import {ratingToPercent} from "../../util";
 
 const OfferCard = (props) => {
-  const {itemClassName, offer, onHover} = props;
+  const {itemClassName, offer} = props;
   const {id, pictures: [placePicture], isPremium, nightlyCost, title, type, rating} = offer;
 
   return (
-    <article className={`${itemClassName} place-card`} onMouseEnter={onHover}>
+    <article className={`${itemClassName} place-card`} onMouseEnter={onHover}
+    >
       {isPremium ? (
         <div className="place-card__mark">
           <span>Premium</span>
@@ -52,7 +53,6 @@ const OfferCard = (props) => {
 OfferCard.propTypes = {
   itemClassName: PropTypes.string.isRequired,
   offer: offerPropType.isRequired,
-  onHover: PropTypes.func.isRequired
 };
 
 export default OfferCard;

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import {OfferType} from "./const.js";
 
-const coordinatesPropType = PropTypes.shape({
+export const coordinatesPropType = PropTypes.shape({
   latitude: PropTypes.number.isRequired,
   longitude: PropTypes.number.isRequired,
 });

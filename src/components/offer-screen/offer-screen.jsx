@@ -5,7 +5,7 @@ import GeoMap from "../geo-map/geo-map";
 import OffersList from "../offers-list/offers-list";
 import {ratingToPercent} from "../../util";
 import {offerPropType} from "../../props";
-import {OFFER_TYPE_TITLES, mapOfferIcon, mapDefaultZoom, mapDefaultCenter} from "../../const";
+import {OFFER_TYPE_TITLES} from "../../const";
 
 const OfferScreen = (props) => {
   const {nearestOffers, offer} = props;
@@ -133,9 +133,7 @@ const OfferScreen = (props) => {
           </div>
           <GeoMap
             className="property__map"
-            mapCenter={mapDefaultCenter}
-            offerIcon={mapOfferIcon}
-            defaultZoom={mapDefaultZoom}
+            mapCenter={offer.city.coordinates}
             offers={nearestOffers}
           />
         </section>
