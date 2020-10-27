@@ -3,16 +3,16 @@ export default [
     id: 1,
     name: `Paris`,
     coordinates: {
-      latitude: 48.8589507,
-      longitude: 2.2770205
+      latitude: 48.8606146,
+      longitude: 2.3354553
     }
   },
   {
     id: 2,
     name: `Cologne`,
     coordinates: {
-      latitude: 50.9578353,
-      longitude: 6.8272407
+      latitude: 50.937976,
+      longitude: 6.958323
     }
   },
   {
@@ -35,16 +35,16 @@ export default [
     id: 5,
     name: `Hamburg`,
     coordinates: {
-      latitude: 53.5586941,
-      longitude: 9.7877402
+      latitude: 53.551003,
+      longitude: 9.992090
     }
   },
   {
     id: 6,
     name: `Dusseldorf`,
     coordinates: {
-      latitude: 51.2385861,
-      longitude: 6.6742686
+      latitude: 51.226090,
+      longitude: 6.781067
     }
   },
 ];

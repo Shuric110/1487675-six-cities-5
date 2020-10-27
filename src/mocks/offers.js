@@ -181,8 +181,8 @@ export default [
       `/img/apartment-01.jpg`,
     ],
     coordinates: {
-      latitude: 52.3809553943508,
-      longitude: 4.939309666406198
+      latitude: 48.880178,
+      longitude: 2.324560
     },
     isPremium: true,
     nightlyCost: 180,

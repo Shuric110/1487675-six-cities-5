@@ -17,3 +17,7 @@ export const formatReviewDate = (date) => {
 export const formatDateAsISO = (date) => {
   return moment(date).format(`YYYY-MM-DD`);
 };
+
+export const extend = (a, b) => {
+  return Object.assign({}, a, b);
+};
