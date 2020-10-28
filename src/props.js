@@ -12,6 +12,10 @@ export const reviewPropType = PropTypes.shape({
 export const offerPropType = PropTypes.shape({
   id: PropTypes.number.isRequired,
   pictures: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  coordinates: PropTypes.shape({
+    latitude: PropTypes.number.isRequired,
+    longitude: PropTypes.number.isRequired,
+  }).isRequired,
   isPremium: PropTypes.bool.isRequired,
   nightlyCost: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,

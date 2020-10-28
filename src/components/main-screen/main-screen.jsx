@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import OffersList from "../offers-list/offers-list";
+import GeoMap from "../geo-map/geo-map";
 
 import {offerPropType} from "../../props";
+import {mapOfferIcon, mapDefaultZoom, mapDefaultCenter} from "../../const";
 
 const MainScreen = (props) => {
   const {offers, offersCount} = props;
@@ -97,7 +99,12 @@ const MainScreen = (props) => {
 
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <GeoMap
+                mapCenter={mapDefaultCenter}
+                offerIcon={mapOfferIcon}
+                defaultZoom={mapDefaultZoom}
+                offers={offers}
+              />
             </div>
           </div>
         </div>

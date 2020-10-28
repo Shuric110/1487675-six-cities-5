@@ -12,6 +12,10 @@ export default [
       `/img/studio-01.jpg`,
       `/img/apartment-01.jpg`,
     ],
+    coordinates: {
+      latitude: 52.3909553943508,
+      longitude: 4.85309666406198
+    },
     isPremium: true,
     nightlyCost: 120,
     title: `Beautiful & luxurious studio at great location`,
@@ -51,6 +55,10 @@ export default [
       `/img/studio-01.jpg`,
       `/img/apartment-01.jpg`,
     ],
+    coordinates: {
+      latitude: 52.369553943508,
+      longitude: 4.85309666406198
+    },
     isPremium: false,
     nightlyCost: 80,
     title: `Wood and stone place`,
@@ -83,6 +91,10 @@ export default [
       `/img/studio-01.jpg`,
       `/img/apartment-01.jpg`,
     ],
+    coordinates: {
+      latitude: 52.3909553943508,
+      longitude: 4.929309666406198
+    },
     isPremium: false,
     nightlyCost: 132,
     title: `Canal View Prinsengracht`,
@@ -119,6 +131,10 @@ export default [
       `/img/studio-01.jpg`,
       `/img/apartment-01.jpg`,
     ],
+    coordinates: {
+      latitude: 52.3809553943508,
+      longitude: 4.939309666406198
+    },
     isPremium: true,
     nightlyCost: 180,
     title: `Nice, cozy, warm big bed apartment`,
