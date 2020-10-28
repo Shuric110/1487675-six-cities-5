@@ -43,8 +43,7 @@ class GeoMap extends PureComponent {
 
     this._mapContainerRef = createRef();
     this._markers = {};
-    this._activeMarker = null;
-    this._activeMarkerId = null;
+    this._currentActiveOffer = null;
   }
 
   componentDidMount() {
@@ -73,30 +72,30 @@ class GeoMap extends PureComponent {
 
   componentWillUnmount() {
     this._markers = {};
-    this._activeMarker = null;
-    this._activeMarkerId = null;
+    this._currentActiveOffer = null;
     this._map.remove();
   }
 
   updateMap(initializing) {
     const {
-      mapCenter: {latitude: centerLatitude, longitude: centerLongitude},
-      offers
+      mapCenter,
+      offers,
+      activeOffer
     } = this.props;
 
     if (!initializing) {
-      this._map.setView([centerLatitude, centerLongitude], DEFAULT_ZOOM);
+      this._map.setView(Object.values(mapCenter), DEFAULT_ZOOM);
     }
 
     const newMarkers = {};
 
     if (offers) {
-      offers.forEach(({id, coordinates: {latitude, longitude}}) => {
+      offers.forEach(({id, coordinates}) => {
         if (this._markers[id]) {
           newMarkers[id] = this._markers[id];
           this._markers[id] = false;
         } else {
-          const marker = leaflet.marker([latitude, longitude], {icon: this._offerIcon});
+          const marker = leaflet.marker(Object.values(coordinates), {icon: this._offerIcon});
           marker.addTo(this._map);
           newMarkers[id] = marker;
         }
@@ -111,12 +110,25 @@ class GeoMap extends PureComponent {
 
     this._markers = newMarkers;
 
-    if (this._activeMarkerId !== offer.id) {
-      if (this._activeMarker) {
-
+    if (
+      (this._currentActiveOffer ? this._currentActiveOffer.id : null) !==
+      (activeOffer ? activeOffer.id : null)
+    ) {
+      if (this._currentActiveOffer) {
+        const activeMarker = this._markers[this._currentActiveOffer.id];
+        if (activeMarker) {
+          activeMarker.setIcon(this._offerIcon);
+        }
+        this._currentActiveOffer = null;
       }
 
-      if ()
+      if (activeOffer) {
+        this._currentActiveOffer = activeOffer;
+        const activeMarker = this._markers[activeOffer.id];
+        if (activeMarker) {
+          activeMarker.setIcon(this._activeOfferIcon);
+        }
+      }
     }
   }
 
