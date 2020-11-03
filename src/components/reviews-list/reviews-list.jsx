@@ -20,7 +20,7 @@ const ReviewsList = (props) => {
       </ul>
 
       <ReviewForm
-        onFormSubmit={(data) => console.log(data)}
+        onFormSubmit={() => null}
       />
     </section>
   );

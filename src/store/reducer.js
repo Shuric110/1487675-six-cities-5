@@ -32,7 +32,7 @@ const reducer = (state = initialState, action) => {
       });
     case ActionType.CLEAR_ACTIVE_OFFER:
       const {oldOffer} = action.payload;
-      if (oldOffer !== state.activeOffer) {
+      if (oldOffer && oldOffer !== state.activeOffer) {
         return state;
       }
       return extend(state, {

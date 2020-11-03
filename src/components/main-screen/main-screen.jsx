@@ -2,13 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
-import OffersList from "../offers-list/offers-list";
+import BasicOffersList from "../offers-list/offers-list";
 import GeoMap from "../geo-map/geo-map";
 import CitiesMenu from "../cities-menu/cities-menu";
 import SortSelect from "../sort-select/sort-select";
+import withActiveOffer from "../../hocs/with-active-offer/with-active-offer";
 
 import {offerPropType, cityPropType} from "../../props";
 import {filterOffers} from "../../offers";
+
+const OffersList = withActiveOffer(BasicOffersList);
 
 const MainScreen = (props) => {
   const {offers, currentCity} = props;

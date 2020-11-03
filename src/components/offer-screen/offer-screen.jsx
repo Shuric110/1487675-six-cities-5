@@ -2,10 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import ReviewsList from "../reviews-list/reviews-list";
 import GeoMap from "../geo-map/geo-map";
-import OffersList from "../offers-list/offers-list";
+import BasicOffersList from "../offers-list/offers-list";
+import withActiveOffer from "../../hocs/with-active-offer/with-active-offer";
+
 import {ratingToPercent} from "../../util";
 import {offerPropType} from "../../props";
 import {OFFER_TYPE_TITLES} from "../../const";
+
+const OffersList = withActiveOffer(BasicOffersList);
 
 const OfferScreen = (props) => {
   const {nearestOffers, offer} = props;
