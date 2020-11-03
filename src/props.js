@@ -1,6 +1,11 @@
 import PropTypes from "prop-types";
 import {OfferType} from "./const.js";
 
+const coordinatesPropType = PropTypes.shape({
+  latitude: PropTypes.number.isRequired,
+  longitude: PropTypes.number.isRequired,
+});
+
 export const reviewPropType = PropTypes.shape({
   id: PropTypes.number.isRequired,
   authorAvatar: PropTypes.string.isRequired,
@@ -13,10 +18,7 @@ export const reviewPropType = PropTypes.shape({
 export const offerPropType = PropTypes.shape({
   id: PropTypes.number.isRequired,
   pictures: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  coordinates: PropTypes.shape({
-    latitude: PropTypes.number.isRequired,
-    longitude: PropTypes.number.isRequired,
-  }).isRequired,
+  coordinates: coordinatesPropType.isRequired,
   isPremium: PropTypes.bool.isRequired,
   nightlyCost: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
@@ -37,4 +39,10 @@ export const offerPropType = PropTypes.shape({
 export const favoritePropType = PropTypes.shape({
   city: PropTypes.string.isRequired,
   offers: PropTypes.arrayOf(offerPropType.isRequired).isRequired,
+});
+
+export const cityPropType = PropTypes.shape({
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  coordinates: coordinatesPropType.isRequired,
 });

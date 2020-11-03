@@ -13,19 +13,19 @@ export default class GeoMap extends PureComponent {
     super(props);
 
     this._mapContainerRef = createRef();
+    this._markers = {};
   }
 
   componentDidMount() {
     const {
       mapCenter: {latitude: centerLatitude, longitude: centerLongitude},
       offerIcon: {url: offerIconUrl, width: offerIconWidth, height: offerIconHeight, anchorLeft: offerIconAnchorLeft, anchorTop: offerIconAnchorTop},
-      defaultZoom,
-      offers
+      defaultZoom
     } = this.props;
 
     const mapContainer = this._mapContainerRef.current;
 
-    const offerIcon = leaflet.icon({
+    this._offerIcon = leaflet.icon({
       iconUrl: offerIconUrl,
       iconSize: [offerIconWidth, offerIconHeight],
       iconAnchor: [offerIconAnchorLeft, offerIconAnchorTop]
@@ -42,21 +42,54 @@ export default class GeoMap extends PureComponent {
       .tileLayer(TILE_LAYER_URL_TEMPLATE, {attribution: TILE_LAYER_ATTRIBUTION})
       .addTo(this._map);
 
-    if (offers) {
-      offers.forEach(({coordinates: {latitude, longitude}}) => {
-        leaflet
-         .marker([latitude, longitude], {icon: offerIcon})
-         .addTo(this._map);
-      });
-    }
+    this.updateMap(true);
   }
 
   componentWillUnmount() {
     this._map.remove();
   }
 
+  updateMap(initializing) {
+    const {
+      mapCenter: {latitude: centerLatitude, longitude: centerLongitude},
+      defaultZoom,
+      offers
+    } = this.props;
+
+    if (!initializing) {
+      this._map.setView([centerLatitude, centerLongitude], defaultZoom);
+    }
+
+    const newMarkers = {};
+
+    if (offers) {
+      offers.forEach(({id, coordinates: {latitude, longitude}}) => {
+        if (this._markers[id]) {
+          newMarkers[id] = this._markers[id];
+          this._markers[id] = false;
+        } else {
+          const marker = leaflet.marker([latitude, longitude], {icon: this._offerIcon});
+          marker.addTo(this._map);
+          newMarkers[id] = marker;
+        }
+      });
+    }
+
+    Object.values(this._markers).forEach((marker) => {
+      if (marker) {
+        marker.remove();
+      }
+    });
+
+    this._markers = newMarkers;
+  }
+
   render() {
     const {className} = this.props;
+
+    if (this._map) {
+      this.updateMap(false);
+    }
 
     return (
       <section
