@@ -1,16 +1,22 @@
 import React from "react";
 import {Link} from 'react-router-dom';
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
+
+import {ActionCreator} from "../../store/action";
 import {offerPropType} from "../../props";
 import {OFFER_TYPE_TITLES} from "../../const";
 import {ratingToPercent} from "../../util";
 
 const OfferCard = (props) => {
-  const {itemClassName, offer, onHover} = props;
+  const {itemClassName, offer, setActiveOffer, clearActiveOffer} = props;
   const {id, pictures: [placePicture], isPremium, nightlyCost, title, type, rating} = offer;
 
   return (
-    <article className={`${itemClassName} place-card`} onMouseEnter={onHover}>
+    <article className={`${itemClassName} place-card`}
+      onMouseEnter={() => setActiveOffer(offer)}
+      onMouseLeave={() => clearActiveOffer(offer)}
+    >
       {isPremium ? (
         <div className="place-card__mark">
           <span>Premium</span>
@@ -52,7 +58,18 @@ const OfferCard = (props) => {
 OfferCard.propTypes = {
   itemClassName: PropTypes.string.isRequired,
   offer: offerPropType.isRequired,
-  onHover: PropTypes.func.isRequired
+  setActiveOffer: PropTypes.func.isRequired,
+  clearActiveOffer: PropTypes.func.isRequired,
 };
 
-export default OfferCard;
+const mapDispatchToProps = (dispatch) => ({
+  setActiveOffer(offer) {
+    dispatch(ActionCreator.setActiveOffer(offer));
+  },
+  clearActiveOffer(oldOffer) {
+    dispatch(ActionCreator.clearActiveOffer(oldOffer));
+  },
+});
+
+export {OfferCard};
+export default connect(null, mapDispatchToProps)(OfferCard);

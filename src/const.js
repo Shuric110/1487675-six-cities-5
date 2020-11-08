@@ -12,17 +12,28 @@ export const OFFER_TYPE_TITLES = {
   [OfferType.HOTEL]: `Hotel`,
 };
 
-export const mapOfferIcon = {
-  url: `/img/pin.svg`,
-  width: 27,
-  height: 39,
-  anchorLeft: 14,
-  anchorTop: 38
+export const SortType = {
+  DEFAULT: `DEFAULT`,
+  PRICE_ASC: `PRICE_ASC`,
+  PRICE_DESC: `PRICE_DESC`,
+  RATING_DESC: `RATING_DESC`
 };
 
-export const mapDefaultZoom = 12;
-
-export const mapDefaultCenter = {
-  latitude: 52.38333,
-  longitude: 4.9
+export const SORT_DEFINITIONS = {
+  [SortType.DEFAULT]: {
+    title: `Popular`,
+    compare: null,
+  },
+  [SortType.PRICE_ASC]: {
+    title: `Price: low to high`,
+    compare: ({nightlyCost: nightlyCostA}, {nightlyCost: nightlyCostB}) => (nightlyCostA - nightlyCostB),
+  },
+  [SortType.PRICE_DESC]: {
+    title: `Price: high to low`,
+    compare: ({nightlyCost: nightlyCostA}, {nightlyCost: nightlyCostB}) => (nightlyCostB - nightlyCostA),
+  },
+  [SortType.RATING_DESC]: {
+    title: `Top rated first`,
+    compare: ({rating: ratingA}, {rating: ratingB}) => (ratingB - ratingA),
+  },
 };
