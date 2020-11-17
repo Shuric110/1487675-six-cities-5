@@ -155,7 +155,7 @@ GeoMap.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  activeOffer: state.activeOffer,
+  activeOffer: state.APP.activeOffer,
 });
 
 export {GeoMap};

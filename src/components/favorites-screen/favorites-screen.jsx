@@ -1,6 +1,8 @@
 import React from "react";
 import {Link} from 'react-router-dom';
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
+
 import {favoritePropType} from "../../props";
 import {OFFER_TYPE_TITLES} from "../../const";
 import {ratingToPercent} from "../../util";
@@ -112,4 +114,9 @@ FavoritesScreen.propTypes = {
   favorites: PropTypes.arrayOf(favoritePropType.isRequired).isRequired,
 };
 
-export default FavoritesScreen;
+const mapStateToProps = (state) => ({
+  favorites: state.DATA.favorites,
+});
+
+export {FavoritesScreen};
+export default connect(mapStateToProps)(FavoritesScreen);

@@ -1,4 +1,6 @@
-export default [
+const DEFAULT_CITY_INDEX = 0;
+
+export const CITIES = [
   {
     id: 1,
     name: `Paris`,
@@ -48,3 +50,5 @@ export default [
     }
   },
 ];
+
+export const DEFAULT_CITY = CITIES[DEFAULT_CITY_INDEX];

@@ -47,7 +47,7 @@ SortSelect.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  sortType: state.sortType,
+  sortType: state.APP.sortType,
 });
 
 const mapDispatchToProps = (dispatch) => ({

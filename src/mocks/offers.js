@@ -1,4 +1,4 @@
-import CITIES from "./cities";
+import {CITIES} from "../static";
 import {makeReviews} from "./review";
 import {OfferType} from "../const";
 

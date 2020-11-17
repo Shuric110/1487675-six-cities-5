@@ -35,8 +35,8 @@ CitiesMenu.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  cities: state.cities,
-  currentCity: state.currentCity
+  cities: state.DATA.cities,
+  currentCity: state.APP.currentCity
 });
 
 const mapDispatchToProps = (dispatch) => ({

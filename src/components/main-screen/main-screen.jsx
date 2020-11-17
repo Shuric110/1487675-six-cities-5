@@ -9,8 +9,8 @@ import SortSelect from "../sort-select/sort-select";
 import OffersEmpty from "../offers-empty/offers-empty";
 import withActiveOffer from "../../hocs/with-active-offer/with-active-offer";
 
+import {getFilteredOffers} from "../../store/selectors";
 import {offerPropType, cityPropType} from "../../props";
-import {filterOffers} from "../../offers";
 
 const OffersList = withActiveOffer(BasicOffersList);
 
@@ -57,7 +57,6 @@ const MainScreen = (props) => {
                 <OffersList
                   listClassName="cities__places-list"
                   itemClassName="cities__place-card"
-                  offers={offers}
                 />
 
               </section>
@@ -70,7 +69,7 @@ const MainScreen = (props) => {
               </div>
             </div>
           ) : (
-            <OffersEmpty />
+            <OffersEmpty>{cityName}</OffersEmpty>
           )}
         </div>
       </main>
@@ -84,8 +83,8 @@ MainScreen.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  offers: filterOffers(state.offers, {city: state.currentCity}),
-  currentCity: state.currentCity,
+  offers: getFilteredOffers(state),
+  currentCity: state.APP.currentCity,
 });
 
 export {MainScreen};

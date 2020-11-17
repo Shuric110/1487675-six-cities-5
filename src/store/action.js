@@ -3,6 +3,10 @@ export const ActionType = {
   SET_SORT_TYPE: `SET_SORT_TYPE`,
   SET_ACTIVE_OFFER: `SET_ACTIVE_OFFER`,
   CLEAR_ACTIVE_OFFER: `CLEAR_ACTIVE_OFFER`,
+
+  INIT_CITIES: `INIT_CITIES`,
+  INIT_OFFERS: `INIT_OFFERS`,
+  INIT_FAVORITES: `INIT_FAVORITES`,
 };
 
 export const ActionCreator = {
@@ -10,16 +14,35 @@ export const ActionCreator = {
     type: ActionType.SET_CURRENT_CITY,
     payload: {city},
   }),
+
   setSortType: (sortType) => ({
     type: ActionType.SET_SORT_TYPE,
     payload: {sortType},
   }),
+
   setActiveOffer: (offer) => ({
     type: ActionType.SET_ACTIVE_OFFER,
     payload: {offer},
   }),
+
   clearActiveOffer: (oldOffer) => ({
     type: ActionType.CLEAR_ACTIVE_OFFER,
     payload: {oldOffer},
   }),
+
+  initOffers: (offers) => ({
+    type: ActionType.INIT_OFFERS,
+    payload: {offers},
+  }),
+
+  initFavorites: (favorites) => ({
+    type: ActionType.INIT_FAVORITES,
+    payload: {favorites},
+  }),
+
+  initCities: (cities) => ({
+    type: ActionType.INIT_CITIES,
+    payload: {cities},
+  }),
+
 };
