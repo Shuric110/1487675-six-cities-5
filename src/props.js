@@ -45,4 +45,5 @@ export const cityPropType = PropTypes.shape({
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   coordinates: coordinatesPropType.isRequired,
+  zoom: PropTypes.number.isRequired,
 });

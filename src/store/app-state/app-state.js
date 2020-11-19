@@ -33,6 +33,21 @@ const appState = (state = initialState, action) => {
       return extend(state, {
         activeOffer: null,
       });
+
+    case ActionType.INIT_CITIES:
+      // При обновлении списка городов обновим активный город
+
+      if (!state.currentCity) {
+        return state;
+      }
+
+      const currentCityId = state.currentCity.id;
+      const {cities} = action.payload;
+
+      const currentCity = cities.find(({id}) => id === currentCityId);
+      return extend(state, {
+        currentCity,
+      });
   }
 
   return state;
