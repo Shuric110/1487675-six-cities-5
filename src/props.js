@@ -50,7 +50,7 @@ export const cityPropType = PropTypes.shape({
 });
 
 export const authorizationInfoPropType = PropTypes.oneOfType([
-  null,
+  PropTypes.oneOf([null]),
   PropTypes.shape({
     id: PropTypes.number.isRequired,
     avatar: PropTypes.string.isRequired,
