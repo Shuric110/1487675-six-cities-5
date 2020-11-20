@@ -14,10 +14,8 @@ const CitiesMenu = (props) => {
           {cities.map((city) => (
             <li className="locations__item" key={city.id}>
               <a onClick={() => setCurrentCity(city)}
-                className={
-                  `locations__item-link tabs__item` +
-                  (city.id === currentCity.id ? ` tabs__item--active` : ``)
-                }>
+                className={`locations__item-link tabs__item ${city.id === currentCity.id ? `tabs__item--active` : ``}`}
+              >
                 <span>{city.name}</span>
               </a>
             </li>
