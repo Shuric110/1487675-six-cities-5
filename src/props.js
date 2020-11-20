@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import {OfferType} from "./const.js";
+import {OfferType, AuthorizationStatus} from "./const.js";
 
 export const coordinatesPropType = PropTypes.shape({
   latitude: PropTypes.number.isRequired,
@@ -49,13 +49,12 @@ export const cityPropType = PropTypes.shape({
   zoom: PropTypes.number.isRequired,
 });
 
-export const authorizationInfoPropType = PropTypes.oneOfType([
-  PropTypes.oneOf([null]),
-  PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    avatar: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    isPro: PropTypes.bool.isRequired,
-    name: PropTypes.string.isRequired
-  })
-]);
+export const authorizationInfoPropType = PropTypes.shape({
+  id: PropTypes.number.isRequired,
+  avatar: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  isPro: PropTypes.bool.isRequired,
+  name: PropTypes.string.isRequired
+});
+
+export const authorizationStatusPropType = PropTypes.oneOf(Object.values(AuthorizationStatus));
