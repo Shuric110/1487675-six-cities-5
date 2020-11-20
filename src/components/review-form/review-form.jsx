@@ -1,5 +1,6 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+import withFormState from "../../hocs/with-form-state/with-form-state";
 
 const StarsLabels = {
   1: `terribly`,
@@ -9,7 +10,12 @@ const StarsLabels = {
   5: `perfect`,
 };
 
-export default class ReviewForm extends PureComponent {
+const initialState = {
+  rating: null,
+  text: ``,
+};
+
+class ReviewForm extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -24,20 +30,20 @@ export default class ReviewForm extends PureComponent {
   }
 
   handleRatingChange(evt) {
-    this.setState({rating: +evt.target.value});
+    this.props.setState({rating: +evt.target.value});
   }
 
   handleTextChange(evt) {
-    this.setState({text: evt.target.value});
+    this.props.setState({text: evt.target.value});
   }
 
   handleFormSubmit(evt) {
     evt.preventDefault();
-    this.props.onFormSubmit(this.state);
+    this.props.onFormSubmit();
   }
 
   render() {
-    const {rating, text} = this.state;
+    const {rating, text} = this.props.state;
 
     return (
       <form className="reviews__form form" action="#" method="post" onSubmit={this.handleFormSubmit}>
@@ -73,4 +79,9 @@ export default class ReviewForm extends PureComponent {
 
 ReviewForm.propTypes = {
   onFormSubmit: PropTypes.func.isRequired,
+  setState: PropTypes.func.isRequired,
+  state: PropTypes.object.isRequired,
 };
+
+export {ReviewForm};
+export default withFormState(ReviewForm, initialState);
