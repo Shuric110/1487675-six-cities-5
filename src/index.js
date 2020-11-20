@@ -7,6 +7,7 @@ import thunk from "redux-thunk";
 
 import App from "./components/app/app";
 import reducer from "./store/root-reducer";
+import {redirect} from "./store/middleware/redirect";
 
 import {INITIAL_CITIES, DEFAULT_INITIAL_CITY} from "./static";
 import {ActionCreator} from "./store/action";
@@ -24,15 +25,14 @@ const apiAdapter = new ApiAdapter(api);
 const store = createStore(
     reducer,
     composeWithDevTools(
-        applyMiddleware(thunk.withExtraArgument(apiAdapter))
+        applyMiddleware(thunk.withExtraArgument(apiAdapter)),
+        applyMiddleware(redirect)
     )
 );
 
 store.dispatch(ActionCreator.initCities(INITIAL_CITIES));
 store.dispatch(ActionCreator.setCurrentCity(DEFAULT_INITIAL_CITY));
 store.dispatch(ActionCreator.initFavorites(FAVORITES));
-
-// store.dispatch(ActionCreator.initOffers(OFFERS));
 
 store.dispatch(AsyncActionCreator.fetchHotelsAndCities());
 
