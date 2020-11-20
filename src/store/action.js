@@ -45,4 +45,8 @@ export const ActionCreator = {
     payload: {cities},
   }),
 
+  updateAuthorization: (status, authInfo) => ({
+    type: ActionType.UPDATE_AUTHORIZATION,
+    payload: {status, authInfo},
+  }),
 };

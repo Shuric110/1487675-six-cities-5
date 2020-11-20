@@ -48,3 +48,14 @@ export const cityPropType = PropTypes.shape({
   coordinates: coordinatesPropType.isRequired,
   zoom: PropTypes.number.isRequired,
 });
+
+export const authorizationInfoPropType = PropTypes.oneOfType([
+  null,
+  PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    avatar: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    isPro: PropTypes.bool.isRequired,
+    name: PropTypes.string.isRequired
+  })
+]);
