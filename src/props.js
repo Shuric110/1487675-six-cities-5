@@ -18,7 +18,9 @@ export const reviewPropType = PropTypes.shape({
 export const offerPropType = PropTypes.shape({
   id: PropTypes.number.isRequired,
   pictures: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  placePicture: PropTypes.string.isRequired,
   coordinates: coordinatesPropType.isRequired,
+  mapZoom: PropTypes.number.isRequired,
   isPremium: PropTypes.bool.isRequired,
   nightlyCost: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
@@ -33,7 +35,6 @@ export const offerPropType = PropTypes.shape({
     avatar: PropTypes.string.isRequired,
     isSuper: PropTypes.bool.isRequired,
   }).isRequired,
-  reviews: PropTypes.arrayOf(reviewPropType.isRequired).isRequired,
 });
 
 export const favoritePropType = PropTypes.shape({

@@ -52,10 +52,12 @@ export default class ApiAdapter {
       id: remoteHotel.id,
       city,
       pictures: remoteHotel.images,
+      placePicture: remoteHotel.preview_image,
       coordinates: {
         latitude: remoteHotel.location.latitude,
         longitude: remoteHotel.location.longitude
       },
+      mapZoom: remoteHotel.location.zoom,
       isPremium: remoteHotel.is_premium,
       nightlyCost: remoteHotel.price,
       title: remoteHotel.title,

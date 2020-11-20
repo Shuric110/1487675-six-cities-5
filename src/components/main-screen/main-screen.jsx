@@ -16,7 +16,7 @@ const OffersList = withActiveOffer(BasicOffersList);
 
 const MainScreen = (props) => {
   const {offers, currentCity} = props;
-  const {name: cityName, coordinates: cityCoordinates} = currentCity;
+  const {name: cityName, coordinates: cityCoordinates, zoom} = currentCity;
 
   return (
     <div className="page page--gray page--main">
@@ -64,6 +64,7 @@ const MainScreen = (props) => {
                 <GeoMap
                   className="cities__map"
                   mapCenter={cityCoordinates}
+                  zoom={zoom}
                   offers={offers}
                 />
               </div>

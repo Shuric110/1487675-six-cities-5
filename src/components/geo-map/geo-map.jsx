@@ -48,7 +48,8 @@ class GeoMap extends PureComponent {
 
   componentDidMount() {
     const {
-      mapCenter: {latitude: centerLatitude, longitude: centerLongitude}
+      mapCenter,
+      zoom
     } = this.props;
 
     const mapContainer = this._mapContainerRef.current;
@@ -57,11 +58,14 @@ class GeoMap extends PureComponent {
     this._activeOfferIcon = makeIcon(ACTIVE_OFFER_ICON_DEFINITION);
 
     this._map = leaflet.map(mapContainer, {
-      center: [centerLatitude, centerLongitude],
-      zoom: DEFAULT_ZOOM,
+      center: Object.values(mapCenter),
+      zoom: zoom || DEFAULT_ZOOM,
       zoomControl: false,
       marker: true
     });
+
+    this._mapCenter = mapCenter;
+    this._zoom = zoom;
 
     leaflet
       .tileLayer(TILE_LAYER_URL_TEMPLATE, {attribution: TILE_LAYER_ATTRIBUTION})
@@ -76,15 +80,31 @@ class GeoMap extends PureComponent {
     this._map.remove();
   }
 
+  setMapView(mapCenter, zoom) {
+    if (
+      this._zoom === zoom &&
+      this._mapCenter.latitude === mapCenter.latitude &&
+      this._mapCenter.longitude === mapCenter.longitude
+    ) {
+      return;
+    }
+
+    this._mapCenter = mapCenter;
+    this._zoom = zoom;
+
+    this._map.setView(Object.values(mapCenter), zoom || DEFAULT_ZOOM);
+  }
+
   updateMap(initializing) {
     const {
       mapCenter,
+      zoom,
       offers,
       activeOffer
     } = this.props;
 
     if (!initializing) {
-      this._map.setView(Object.values(mapCenter), DEFAULT_ZOOM);
+      this.setMapView(mapCenter, zoom);
     }
 
     const newMarkers = {};
@@ -150,6 +170,7 @@ class GeoMap extends PureComponent {
 GeoMap.propTypes = {
   className: PropTypes.string.isRequired,
   mapCenter: coordinatesPropType.isRequired,
+  zoom: PropTypes.number,
   offers: PropTypes.arrayOf(offerPropType.isRequired),
   activeOffer: offerPropType
 };
