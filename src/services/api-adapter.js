@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export default class ApiAdapter {
   constructor(api) {
     this._api = api;
@@ -22,6 +24,40 @@ export default class ApiAdapter {
       .then(
           (authInfo) => authInfo ? ApiAdapter.convertRemoteAuthInfoToLocal(authInfo) : null
       );
+  }
+
+  getOfferById(id) {
+    return this._api.getHotelById(id)
+      .then(
+          (hotel) => ApiAdapter.convertRemoteHotelToLocalOffer(hotel)
+      );
+  }
+
+  getNearestOffersById(id) {
+    return this._api.getNearbyHotelsById(id)
+      .then(
+          (hotels) => hotels.map((hotel) => ApiAdapter.convertRemoteHotelToLocalOffer(hotel))
+      );
+  }
+
+  getReviewsByOfferId(id) {
+    return this._api.getCommentsByHotelId(id)
+      .then(
+          (comments) => comments.map((comment) => ApiAdapter.convertRemoteCommentToLocalReview(comment))
+      );
+
+  }
+
+
+  static convertRemoteCommentToLocalReview(comment) {
+    return {
+      id: comment.id,
+      authorAvatar: comment.user.avatar_url,
+      authorName: comment.user.name,
+      rating: comment.rating,
+      date: moment(comment.date).toDate(),
+      text: comment.comment
+    };
   }
 
   static convertRemoteHotelsToLocalOffersAndCities(hotels, initialCities) {

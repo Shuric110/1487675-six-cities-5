@@ -30,8 +30,10 @@ const store = createStore(
     )
 );
 
+store.dispatch(ActionCreator.setApi(apiAdapter));
 store.dispatch(ActionCreator.initCities(INITIAL_CITIES));
 store.dispatch(ActionCreator.setCurrentCity(DEFAULT_INITIAL_CITY));
+
 store.dispatch(ActionCreator.initFavorites(FAVORITES));
 
 

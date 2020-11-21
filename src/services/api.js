@@ -57,6 +57,18 @@ export default class Api {
     return this._httpClient.get(APIRoute.HOTELS);
   }
 
+  getHotelById(id) {
+    return this._httpClient.get(`${APIRoute.HOTELS}/${id}`);
+  }
+
+  getNearbyHotelsById(id) {
+    return this._httpClient.get(`${APIRoute.HOTELS}/${id}${APIRoute.HOTELS_NEARBY}`);
+  }
+
+  getCommentsByHotelId(id) {
+    return this._httpClient.get(`${APIRoute.COMMENTS}/${id}`);
+  }
+
   checkAuthorization() {
     return this._httpClient.get(APIRoute.LOGIN, {__isCheckAuthorization: true})
       .catch((err) => {

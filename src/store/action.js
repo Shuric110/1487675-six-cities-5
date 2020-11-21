@@ -1,4 +1,5 @@
 export const ActionType = {
+  SET_API: `SET_API`,
   SET_CURRENT_CITY: `SET_CURRENT_CITY`,
   SET_SORT_TYPE: `SET_SORT_TYPE`,
   SET_ACTIVE_OFFER: `SET_ACTIVE_OFFER`,
@@ -14,6 +15,11 @@ export const ActionType = {
 };
 
 export const ActionCreator = {
+  setApi: (api) => ({
+    type: ActionType.SET_API,
+    payload: {api},
+  }),
+
   setCurrentCity: (city) => ({
     type: ActionType.SET_CURRENT_CITY,
     payload: {city},

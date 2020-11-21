@@ -15,16 +15,19 @@ const appState = (state = initialState, action) => {
       return extend(state, {
         currentCity: city,
       });
+
     case ActionType.SET_SORT_TYPE:
       const {sortType} = action.payload;
       return extend(state, {
         sortType,
       });
+
     case ActionType.SET_ACTIVE_OFFER:
       const {offer} = action.payload;
       return extend(state, {
         activeOffer: offer,
       });
+
     case ActionType.CLEAR_ACTIVE_OFFER:
       const {oldOffer} = action.payload;
       if (oldOffer && oldOffer !== state.activeOffer) {
