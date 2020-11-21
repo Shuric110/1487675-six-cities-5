@@ -69,6 +69,10 @@ export default class Api {
     return this._httpClient.get(`${APIRoute.COMMENTS}/${id}`);
   }
 
+  postComment(hotelId, comment, rating) {
+    return this._httpClient.post(`${APIRoute.COMMENTS}/${hotelId}`, {comment, rating});
+  }
+
   checkAuthorization() {
     return this._httpClient.get(APIRoute.LOGIN, {__isCheckAuthorization: true})
       .catch((err) => {

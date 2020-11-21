@@ -19,6 +19,8 @@ const withOfferDetails = (Component) => {
       super(props);
 
       this.state = initialState;
+
+      this.setReviews = this.setReviews.bind(this);
     }
 
     static getDerivedStateFromProps(props, state) {
@@ -54,6 +56,10 @@ const withOfferDetails = (Component) => {
       });
     }
 
+    setReviews(offerId, reviews) {
+      this.setState((state) => state.offerId === offerId ? {reviews} : null);
+    }
+
     render() {
       const {offer, nearestOffers, reviews} = this.state;
 
@@ -62,6 +68,7 @@ const withOfferDetails = (Component) => {
         offer={offer}
         nearestOffers={nearestOffers}
         reviews={reviews}
+        setReviews={this.setReviews}
       />;
     }
   }

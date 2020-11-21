@@ -45,7 +45,13 @@ export default class ApiAdapter {
       .then(
           (comments) => comments.map((comment) => ApiAdapter.convertRemoteCommentToLocalReview(comment))
       );
+  }
 
+  postReview(offerId, text, rating) {
+    return this._api.postComment(offerId, text, rating)
+      .then(
+          (comments) => comments.map((comment) => ApiAdapter.convertRemoteCommentToLocalReview(comment))
+      );
   }
 
 

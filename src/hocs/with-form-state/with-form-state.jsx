@@ -9,10 +9,20 @@ const withFormState = (Component, initialState) => {
       this.state = initialState || {};
       this.setState = this.setState.bind(this);
       this.handleFormSubmit = this.handleFormSubmit.bind(this);
+      this.clearFormState = this.clearFormState.bind(this);
+    }
+
+    clearFormState() {
+      this.setState(
+          (state) => Object.keys(state).reduce(
+              (result, key) => Object.assign(result, {[key]: ``}),
+              {}
+          )
+      );
     }
 
     handleFormSubmit() {
-      this.props.onFormSubmit(this.state);
+      this.props.onFormSubmit(this.state, this.clearFormState);
     }
 
     render() {

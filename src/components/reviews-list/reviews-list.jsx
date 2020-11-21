@@ -1,11 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+
 import {reviewPropType} from "../../props";
 import Review from "../review/review";
 import ReviewForm from "../review-form/review-form";
 
 const ReviewsList = (props) => {
-  const {reviews} = props;
+  const {reviews, displayReviewForm, onReviewFormSubmit} = props;
 
   return (
     <section className="property__reviews reviews">
@@ -19,15 +20,20 @@ const ReviewsList = (props) => {
         ))}
       </ul>
 
-      <ReviewForm
-        onFormSubmit={() => null}
-      />
+      {displayReviewForm ?
+        <ReviewForm
+          onFormSubmit={onReviewFormSubmit}
+        />
+        : null
+      }
     </section>
   );
 };
 
 ReviewsList.propTypes = {
   reviews: PropTypes.arrayOf(reviewPropType.isRequired).isRequired,
+  displayReviewForm: PropTypes.bool.isRequired,
+  onReviewFormSubmit: PropTypes.func.isRequired,
 };
 
 export default ReviewsList;
