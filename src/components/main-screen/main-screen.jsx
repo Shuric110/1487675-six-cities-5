@@ -9,11 +9,12 @@ import CitiesMenu from "../cities-menu/cities-menu";
 import SortSelect from "../sort-select/sort-select";
 import OffersEmpty from "../offers-empty/offers-empty";
 import withActiveOffer from "../../hocs/with-active-offer/with-active-offer";
+import withAllOffers from "../../hocs/with-all-offers/with-all-offers";
 
 import {getFilteredOffers} from "../../store/selectors";
 import {offerPropType, cityPropType} from "../../props";
 
-const OffersList = withActiveOffer(BasicOffersList);
+const OffersList = withActiveOffer(withAllOffers(BasicOffersList));
 
 const MainScreen = (props) => {
   const {offers, currentCity} = props;
