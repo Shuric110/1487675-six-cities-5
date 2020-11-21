@@ -34,12 +34,16 @@ store.dispatch(ActionCreator.initCities(INITIAL_CITIES));
 store.dispatch(ActionCreator.setCurrentCity(DEFAULT_INITIAL_CITY));
 store.dispatch(ActionCreator.initFavorites(FAVORITES));
 
-store.dispatch(AsyncActionCreator.fetchHotelsAndCities());
 
-
-ReactDOM.render(
-    <Provider store={store}>
-      <App />
-    </Provider>,
-    document.querySelector(`#root`)
-);
+Promise.all([
+  store.dispatch(AsyncActionCreator.fetchHotelsAndCities()),
+  store.dispatch(AsyncActionCreator.checkAuthorization())
+])
+.then(() => {
+  ReactDOM.render(
+      <Provider store={store}>
+        <App />
+      </Provider>,
+      document.querySelector(`#root`)
+  );
+});

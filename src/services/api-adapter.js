@@ -17,6 +17,13 @@ export default class ApiAdapter {
       );
   }
 
+  login(email, password) {
+    return this._api.login(email, password)
+      .then(
+          (authInfo) => authInfo ? ApiAdapter.convertRemoteAuthInfoToLocal(authInfo) : null
+      );
+  }
+
   static convertRemoteHotelsToLocalOffersAndCities(hotels, initialCities) {
     const offers = hotels.map((hotel) => ApiAdapter.convertRemoteHotelToLocalOffer(hotel));
     const cities = initialCities.slice();

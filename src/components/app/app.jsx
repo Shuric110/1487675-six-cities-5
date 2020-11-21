@@ -22,9 +22,16 @@ const App = (props) => {
         <Route exact path={AppRoute.ROOT}>
           <MainScreen />
         </Route>
-        <Route exact path={AppRoute.LOGIN}>
-          <AuthScreen />
-        </Route>
+        <Route exact path={AppRoute.LOGIN}
+          render={(routeProps) => {
+            const locationState = routeProps.location.state;
+            return (
+              <AuthScreen
+                returnUrl={locationState && locationState.returnUrl ? locationState.returnUrl : null}
+              />
+            );
+          }}
+        />
         <PrivateRoute exact path={AppRoute.FAVORITES}>
           <FavoritesScreen />
         </PrivateRoute>
