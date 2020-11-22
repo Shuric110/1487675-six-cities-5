@@ -7,10 +7,10 @@ import {AsyncActionCreator} from "../../store/async-action";
 
 
 const BookmarkButton = (props) => {
-  const {children, baseClassName, offer: {id, isFavorite}, setIsFavorite, updateFavoriteOffer} = props;
+  const {children, baseClassName, offer: {id, isFavorite}, setIsFavorite} = props;
   return (
     <button className={`${baseClassName} button ${isFavorite ? `${baseClassName}--active` : ``}`} type="button"
-      onClick={() => setIsFavorite(id, !isFavorite, updateFavoriteOffer)}
+      onClick={() => setIsFavorite(id, !isFavorite)}
     >
       {children}
     </button>
@@ -23,7 +23,6 @@ BookmarkButton.propTypes = {
   offer: offerPropType.isRequired,
   authorizationStatus: authorizationStatusPropType.isRequired,
   setIsFavorite: PropTypes.func.isRequired,
-  updateFavoriteOffer: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
@@ -31,8 +30,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setIsFavorite(offerId, isFavorite, callback) {
-    dispatch(AsyncActionCreator.setIsFavorite(offerId, isFavorite, callback));
+  setIsFavorite(offerId, isFavorite) {
+    dispatch(AsyncActionCreator.setIsFavorite(offerId, isFavorite));
   }
 });
 

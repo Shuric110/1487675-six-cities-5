@@ -13,6 +13,7 @@ import withOfferDetails from "../../hocs/with-offer-details/with-offer-details";
 import {ratingToPercent} from "../../util";
 import {offerPropType, reviewPropType, authorizationStatusPropType} from "../../props";
 import {OFFER_TYPE_TITLES, AuthorizationStatus} from "../../const";
+import {AsyncActionCreator} from "../../store/async-action";
 
 const OffersList = withActiveOffer(BasicOffersList);
 
@@ -24,16 +25,12 @@ class OfferScreen extends PureComponent {
   }
 
   handleReviewFormSubmit({rating, text}, clearForm) {
-    const {api, setReviews, offer} = this.props;
-    api.postReview(offer.id, text, rating)
-      .then((reviews) => {
-        clearForm();
-        setReviews(offer.id, reviews);
-      });
+    const {postReview, offer: {id}} = this.props;
+    postReview(id, {rating, text}, clearForm);
   }
 
   renderOffer() {
-    const {authorizationStatus, offer, nearestOffers, reviews, updateFavoriteOffer} = this.props;
+    const {authorizationStatus, offer, nearestOffers, reviews} = this.props;
     const {
       pictures, isPremium, nightlyCost, title, type, rating, description, bedrooms, maxAdults, features,
       host: {
@@ -66,7 +63,7 @@ class OfferScreen extends PureComponent {
                 <h1 className="property__name">
                   {title}
                 </h1>
-                <BookmarkButton baseClassName="property__bookmark-button" offer={offer} updateFavoriteOffer={updateFavoriteOffer}>
+                <BookmarkButton baseClassName="property__bookmark-button" offer={offer}>
                   <svg className="place-card__bookmark-icon" width="31" height="33">
                     <use xlinkHref="#icon-bookmark"></use>
                   </svg>
@@ -172,16 +169,19 @@ OfferScreen.propTypes = {
   offer: offerPropType,
   nearestOffers: PropTypes.arrayOf(offerPropType.isRequired),
   reviews: PropTypes.arrayOf(reviewPropType.isRequired),
-  setReviews: PropTypes.func.isRequired,
-  updateFavoriteOffer: PropTypes.func.isRequired,
   authorizationStatus: authorizationStatusPropType,
-  api: PropTypes.object.isRequired,
+  postReview: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   authorizationStatus: state.USER.authorizationStatus,
-  api: state.DATA.api,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  postReview(offerId, review, callback) {
+    dispatch(AsyncActionCreator.postReview(offerId, review, callback));
+  }
 });
 
 export {OfferScreen};
-export default connect(mapStateToProps)(withOfferDetails(OfferScreen));
+export default connect(mapStateToProps, mapDispatchToProps)(withOfferDetails(OfferScreen));

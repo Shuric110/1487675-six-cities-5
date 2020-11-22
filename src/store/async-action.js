@@ -21,13 +21,35 @@ export const AsyncActionCreator = {
     );
   },
 
-  setIsFavorite(offerId, isFavorite, callback) {
+  fetchOfferDetails(offerId) {
+    return (dispatch, getState, api) => {
+      dispatch(ActionCreator.initOfferDetails(offerId));
+
+      Promise.all([
+        api.getOfferById(offerId),
+        api.getNearestOffersById(offerId),
+        api.getReviewsByOfferId(offerId),
+      ])
+      .then(([offer, nearestOffers, reviews]) => {
+        dispatch(ActionCreator.updateOfferDetails(offerId, {offer, nearestOffers, reviews}));
+      });
+    };
+  },
+
+  setIsFavorite(offerId, isFavorite) {
     return (dispatch, _getState, api) => (
       api.setFavorite(offerId, isFavorite)
-        .then((offer) => {
-          dispatch(ActionCreator.updateFavoriteOffer(offer.id, offer.isFavorite));
+        .then((offer) => dispatch(ActionCreator.updateFavoriteOffer(offer.id, offer.isFavorite)))
+    );
+  },
+
+  postReview(offerId, {text, rating}, callback) {
+    return (dispatch, _getState, api) => (
+      api.postReview(offerId, text, rating)
+        .then((reviews) => {
+          dispatch(ActionCreator.updateOfferDetails(offerId, {reviews}));
           if (callback) {
-            callback(offer.id, offer.isFavorite);
+            callback();
           }
         })
     );

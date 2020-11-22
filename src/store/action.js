@@ -1,5 +1,4 @@
 export const ActionType = {
-  SET_API: `SET_API`,
   SET_CURRENT_CITY: `SET_CURRENT_CITY`,
   SET_SORT_TYPE: `SET_SORT_TYPE`,
   SET_ACTIVE_OFFER: `SET_ACTIVE_OFFER`,
@@ -10,17 +9,15 @@ export const ActionType = {
   INIT_FAVORITES: `INIT_FAVORITES`,
   UPDATE_FAVORITE_OFFER: `UPDATE_FAVORITE_OFFER`,
 
+  INIT_OFFER_DETAILS: `INIT_OFFER_DETAILS`,
+  UPDATE_OFFER_DETAILS: `UPDATE_OFFER_DETAILS`,
+
   UPDATE_AUTHORIZATION: `UPDATE_AUTHORIZATION`,
 
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
 };
 
 export const ActionCreator = {
-  setApi: (api) => ({
-    type: ActionType.SET_API,
-    payload: {api},
-  }),
-
   setCurrentCity: (city) => ({
     type: ActionType.SET_CURRENT_CITY,
     payload: {city},
@@ -69,5 +66,15 @@ export const ActionCreator = {
   updateFavoriteOffer: (id, isFavorite) => ({
     type: ActionType.UPDATE_FAVORITE_OFFER,
     payload: {id, isFavorite},
+  }),
+
+  initOfferDetails: (offerId) => ({
+    type: ActionType.INIT_OFFER_DETAILS,
+    payload: {offerId},
+  }),
+
+  updateOfferDetails: (offerId, details) => ({
+    type: ActionType.UPDATE_OFFER_DETAILS,
+    payload: {offerId, details},
   }),
 };
