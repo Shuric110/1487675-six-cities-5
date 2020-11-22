@@ -10,7 +10,7 @@ const HttpCode = {
 const APIRoute = {
   HOTELS: `/hotels`,
   HOTELS_NEARBY: `/nearby`,
-  FAVORITES: `/favorite`,
+  FAVORITE: `/favorite`,
   COMMENTS: `/comments`,
   LOGIN: `/login`,
 };
@@ -71,6 +71,10 @@ export default class Api {
 
   postComment(hotelId, comment, rating) {
     return this._httpClient.post(`${APIRoute.COMMENTS}/${hotelId}`, {comment, rating});
+  }
+
+  setFavorite(hotelId, status) {
+    return this._httpClient.post(`${APIRoute.FAVORITE}/${hotelId}/${status}`);
   }
 
   checkAuthorization() {

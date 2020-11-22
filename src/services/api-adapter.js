@@ -54,6 +54,13 @@ export default class ApiAdapter {
       );
   }
 
+  setFavorite(offerId, isFavorite) {
+    return this._api.setFavorite(offerId, isFavorite ? 1 : 0)
+      .then(
+          (hotel) => ApiAdapter.convertRemoteHotelToLocalOffer(hotel)
+      );
+  }
+
 
   static convertRemoteCommentToLocalReview(comment) {
     return {
@@ -115,6 +122,7 @@ export default class ApiAdapter {
       },
       mapZoom: remoteHotel.location.zoom,
       isPremium: remoteHotel.is_premium,
+      isFavorite: remoteHotel.is_favorite,
       nightlyCost: remoteHotel.price,
       title: remoteHotel.title,
       type: remoteHotel.type,
@@ -137,7 +145,7 @@ export default class ApiAdapter {
       id: remoteAuthInfo.id,
       avatar: remoteAuthInfo.avatar_url,
       email: remoteAuthInfo.email,
-      isPro: remoteAuthInfo.is_pro === `true`,
+      isPro: remoteAuthInfo.is_pro,
       name: remoteAuthInfo.name
     };
   }

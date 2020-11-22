@@ -8,6 +8,7 @@ export const ActionType = {
   INIT_CITIES: `INIT_CITIES`,
   INIT_OFFERS: `INIT_OFFERS`,
   INIT_FAVORITES: `INIT_FAVORITES`,
+  UPDATE_FAVORITE_OFFER: `UPDATE_FAVORITE_OFFER`,
 
   UPDATE_AUTHORIZATION: `UPDATE_AUTHORIZATION`,
 
@@ -63,5 +64,10 @@ export const ActionCreator = {
   redirectToRoute: (url) => ({
     type: ActionType.REDIRECT_TO_ROUTE,
     payload: url,
+  }),
+
+  updateFavoriteOffer: (id, isFavorite) => ({
+    type: ActionType.UPDATE_FAVORITE_OFFER,
+    payload: {id, isFavorite},
   }),
 };

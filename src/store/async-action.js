@@ -12,6 +12,22 @@ export const AsyncActionCreator = {
     );
   },
 
+  fetchFavorites() {
+
+  },
+
+  setIsFavorite(offerId, isFavorite, callback) {
+    return (dispatch, _getState, api) => (
+      api.setFavorite(offerId, isFavorite)
+        .then((offer) => {
+          dispatch(ActionCreator.updateFavoriteOffer(offer.id, offer.isFavorite));
+          if (callback) {
+            callback(offer.id, offer.isFavorite);
+          }
+        })
+    );
+  },
+
   checkAuthorization() {
     return (dispatch, _getState, api) => (
       api.checkAuthorization()

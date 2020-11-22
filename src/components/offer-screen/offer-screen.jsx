@@ -6,6 +6,7 @@ import ReviewsList from "../reviews-list/reviews-list";
 import GeoMap from "../geo-map/geo-map";
 import BasicOffersList from "../offers-list/offers-list";
 import MainHeader from "../main-header/main-header";
+import BookmarkButton from "../bookmark-button/bookmark-button";
 import withActiveOffer from "../../hocs/with-active-offer/with-active-offer";
 import withOfferDetails from "../../hocs/with-offer-details/with-offer-details";
 
@@ -32,7 +33,7 @@ class OfferScreen extends PureComponent {
   }
 
   renderOffer() {
-    const {authorizationStatus, offer, nearestOffers, reviews} = this.props;
+    const {authorizationStatus, offer, nearestOffers, reviews, updateFavoriteOffer} = this.props;
     const {
       pictures, isPremium, nightlyCost, title, type, rating, description, bedrooms, maxAdults, features,
       host: {
@@ -65,12 +66,12 @@ class OfferScreen extends PureComponent {
                 <h1 className="property__name">
                   {title}
                 </h1>
-                <button className="property__bookmark-button button" type="button">
-                  <svg className="property__bookmark-icon" width="31" height="33">
+                <BookmarkButton baseClassName="property__bookmark-button" offer={offer} updateFavoriteOffer={updateFavoriteOffer}>
+                  <svg className="place-card__bookmark-icon" width="31" height="33">
                     <use xlinkHref="#icon-bookmark"></use>
                   </svg>
                   <span className="visually-hidden">To bookmarks</span>
-                </button>
+                </BookmarkButton>
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
@@ -172,6 +173,7 @@ OfferScreen.propTypes = {
   nearestOffers: PropTypes.arrayOf(offerPropType.isRequired),
   reviews: PropTypes.arrayOf(reviewPropType.isRequired),
   setReviews: PropTypes.func.isRequired,
+  updateFavoriteOffer: PropTypes.func.isRequired,
   authorizationStatus: authorizationStatusPropType,
   api: PropTypes.object.isRequired,
 };

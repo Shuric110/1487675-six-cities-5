@@ -17,10 +17,12 @@ const appData = (state = initialState, action) => {
       });
 
     case ActionType.INIT_OFFERS:
+    {
       const {offers} = action.payload;
       return extend(state, {
         offers,
       });
+    }
 
     case ActionType.INIT_FAVORITES:
       const {favorites} = action.payload;
@@ -33,6 +35,22 @@ const appData = (state = initialState, action) => {
       return extend(state, {
         cities,
       });
+
+    case ActionType.UPDATE_FAVORITE_OFFER:
+      const {id, isFavorite} = action.payload;
+      const newState = {};
+
+      newState.offers = state.offers.map((offer) => (offer.id !== id ? offer : extend(offer, {isFavorite})));
+      if (state.favorites) {
+        newState.favorites = isFavorite ? null :
+          state.favorites.map(({city, offers}) => ({
+            city,
+            offers: offers.filter((offer) => offer.id !== id)
+          }))
+          .filter(({offers}) => offers.length > 0);
+      }
+
+      return extend(state, newState);
   }
 
   return state;

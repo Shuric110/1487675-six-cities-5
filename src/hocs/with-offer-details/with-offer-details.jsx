@@ -2,6 +2,8 @@ import React, {PureComponent} from 'react';
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
+import {extend} from "../../util";
+
 const initialState = {
   offerId: null,
   offer: null,
@@ -21,6 +23,7 @@ const withOfferDetails = (Component) => {
       this.state = initialState;
 
       this.setReviews = this.setReviews.bind(this);
+      this.updateFavoriteOffer = this.updateFavoriteOffer.bind(this);
     }
 
     static getDerivedStateFromProps(props, state) {
@@ -56,6 +59,25 @@ const withOfferDetails = (Component) => {
       });
     }
 
+    updateFavoriteOffer(id, isFavorite) {
+      this.setState((state) => {
+        const {offer, nearestOffers} = state;
+        const newState = {};
+
+        if (offer && offer.id === id) {
+          newState.offer = extend(offer, {isFavorite});
+        }
+
+        if (nearestOffers) {
+          newState.nearestOffers = nearestOffers.map(
+              (nearOffer) => nearOffer.id !== id ? nearOffer : extend(nearOffer, {isFavorite})
+          );
+        }
+
+        return newState;
+      });
+    }
+
     setReviews(offerId, reviews) {
       this.setState((state) => state.offerId === offerId ? {reviews} : null);
     }
@@ -69,6 +91,7 @@ const withOfferDetails = (Component) => {
         nearestOffers={nearestOffers}
         reviews={reviews}
         setReviews={this.setReviews}
+        updateFavoriteOffer={this.updateFavoriteOffer}
       />;
     }
   }

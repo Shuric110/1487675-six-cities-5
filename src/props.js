@@ -22,6 +22,7 @@ export const offerPropType = PropTypes.shape({
   coordinates: coordinatesPropType.isRequired,
   mapZoom: PropTypes.number.isRequired,
   isPremium: PropTypes.bool.isRequired,
+  isFavorite: PropTypes.bool.isRequired,
   nightlyCost: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   type: PropTypes.oneOf(Object.values(OfferType)).isRequired,
