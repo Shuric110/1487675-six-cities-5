@@ -4,7 +4,7 @@ import {ActionType} from "../action";
 const initialState = {
   api: null,
   offers: [],
-  favorites: [],
+  favorites: null,
   cities: [],
 };
 

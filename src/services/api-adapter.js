@@ -61,6 +61,27 @@ export default class ApiAdapter {
       );
   }
 
+  getFavorites() {
+    return this._api.getFavorites()
+      .then(
+          (favorites) => ApiAdapter.convertRemoteFavoritesToLocal(favorites)
+      );
+  }
+
+  static convertRemoteFavoritesToLocal(favorites) {
+    const result = {};
+
+    favorites.forEach((hotel) => {
+      const offer = ApiAdapter.convertRemoteHotelToLocalOffer(hotel);
+      const cityName = offer.city.name;
+      if (!result[cityName]) {
+        result[cityName] = [];
+      }
+      result[cityName].push(offer);
+    });
+
+    return Object.entries(result).map(([city, offers]) => ({city, offers}));
+  }
 
   static convertRemoteCommentToLocalReview(comment) {
     return {

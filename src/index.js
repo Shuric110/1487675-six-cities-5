@@ -13,7 +13,7 @@ import {INITIAL_CITIES, DEFAULT_INITIAL_CITY} from "./static";
 import {ActionCreator} from "./store/action";
 import {AsyncActionCreator} from "./store/async-action";
 
-import FAVORITES from "./mocks/favorites";
+// import FAVORITES from "./mocks/favorites";
 
 import Api from "./services/api";
 import ApiAdapter from "./services/api-adapter";
@@ -34,7 +34,7 @@ store.dispatch(ActionCreator.setApi(apiAdapter));
 store.dispatch(ActionCreator.initCities(INITIAL_CITIES));
 store.dispatch(ActionCreator.setCurrentCity(DEFAULT_INITIAL_CITY));
 
-store.dispatch(ActionCreator.initFavorites(FAVORITES));
+// store.dispatch(ActionCreator.initFavorites(FAVORITES));
 
 
 Promise.all([

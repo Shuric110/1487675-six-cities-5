@@ -69,6 +69,10 @@ export default class Api {
     return this._httpClient.get(`${APIRoute.COMMENTS}/${id}`);
   }
 
+  getFavorites() {
+    return this._httpClient.get(APIRoute.FAVORITE);
+  }
+
   postComment(hotelId, comment, rating) {
     return this._httpClient.post(`${APIRoute.COMMENTS}/${hotelId}`, {comment, rating});
   }

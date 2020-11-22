@@ -13,7 +13,12 @@ export const AsyncActionCreator = {
   },
 
   fetchFavorites() {
-
+    return (dispatch, getState, api) => (
+      api.getFavorites()
+        .then((favorites) => {
+          dispatch(ActionCreator.initFavorites(favorites));
+        })
+    );
   },
 
   setIsFavorite(offerId, isFavorite, callback) {
