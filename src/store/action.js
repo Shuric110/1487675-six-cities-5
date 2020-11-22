@@ -58,9 +58,9 @@ export const ActionCreator = {
     payload: {status, authInfo},
   }),
 
-  redirectToRoute: (url) => ({
+  redirectToRoute: (url, state) => ({
     type: ActionType.REDIRECT_TO_ROUTE,
-    payload: url,
+    payload: {url, state},
   }),
 
   updateFavoriteOffer: (id, isFavorite) => ({

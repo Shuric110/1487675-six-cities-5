@@ -11,7 +11,7 @@ export const ratingToPercent = (rating) => {
 };
 
 export const formatReviewDate = (date) => {
-  return moment(date).format(`MMMM D`);
+  return moment(date).format(`MMMM YYYY`);
 };
 
 export const formatDateAsISO = (date) => {

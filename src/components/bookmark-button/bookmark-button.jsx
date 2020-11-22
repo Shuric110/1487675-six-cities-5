@@ -32,7 +32,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   setIsFavorite(offerId, isFavorite) {
     dispatch(AsyncActionCreator.setIsFavorite(offerId, isFavorite));
-  }
+  },
 });
 
 export {BookmarkButton};

@@ -6,7 +6,7 @@ import Review from "../review/review";
 import ReviewForm from "../review-form/review-form";
 
 const ReviewsList = (props) => {
-  const {reviews, displayReviewForm, onReviewFormSubmit} = props;
+  const {reviews, displayReviewForm, offerId} = props;
 
   return (
     <section className="property__reviews reviews">
@@ -22,7 +22,7 @@ const ReviewsList = (props) => {
 
       {displayReviewForm ?
         <ReviewForm
-          onFormSubmit={onReviewFormSubmit}
+          offerId={offerId}
         />
         : null
       }
@@ -32,8 +32,8 @@ const ReviewsList = (props) => {
 
 ReviewsList.propTypes = {
   reviews: PropTypes.arrayOf(reviewPropType.isRequired).isRequired,
+  offerId: PropTypes.number.isRequired,
   displayReviewForm: PropTypes.bool.isRequired,
-  onReviewFormSubmit: PropTypes.func.isRequired,
 };
 
 export default ReviewsList;

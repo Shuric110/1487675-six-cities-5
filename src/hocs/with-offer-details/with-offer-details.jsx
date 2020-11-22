@@ -4,14 +4,15 @@ import {connect} from "react-redux";
 
 import {AsyncActionCreator} from "../../store/async-action";
 import {offerPropType, reviewPropType} from "../../props";
+import {getSortedDetailsReviews} from "../../store/selectors";
 
 const mapStateToProps = (state) => {
-  const {offerId: storeOfferId, offer, nearestOffers, reviews} = state.DATA.offerDetails;
+  const {offerId: storeOfferId, offer, nearestOffers} = state.DATA.offerDetails;
   return {
     storeOfferId,
     offer,
     nearestOffers,
-    reviews
+    reviews: getSortedDetailsReviews(state)
   };
 };
 

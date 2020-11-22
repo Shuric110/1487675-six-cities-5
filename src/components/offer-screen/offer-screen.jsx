@@ -1,4 +1,4 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
@@ -13,26 +13,16 @@ import withOfferDetails from "../../hocs/with-offer-details/with-offer-details";
 import {ratingToPercent} from "../../util";
 import {offerPropType, reviewPropType, authorizationStatusPropType} from "../../props";
 import {OFFER_TYPE_TITLES, AuthorizationStatus} from "../../const";
-import {AsyncActionCreator} from "../../store/async-action";
 
 const OffersList = withActiveOffer(BasicOffersList);
 
-class OfferScreen extends PureComponent {
-  constructor(props) {
-    super(props);
+const OfferScreen = (props) => {
+  const {authorizationStatus, offer, nearestOffers, reviews} = props;
+  let offerInfo = null;
 
-    this.handleReviewFormSubmit = this.handleReviewFormSubmit.bind(this);
-  }
-
-  handleReviewFormSubmit({rating, text}, clearForm) {
-    const {postReview, offer: {id}} = this.props;
-    postReview(id, {rating, text}, clearForm);
-  }
-
-  renderOffer() {
-    const {authorizationStatus, offer, nearestOffers, reviews} = this.props;
+  if (offer && nearestOffers && reviews) {
     const {
-      pictures, isPremium, nightlyCost, title, type, rating, description, bedrooms, maxAdults, features,
+      id, pictures, isPremium, nightlyCost, title, type, rating, description, bedrooms, maxAdults, features,
       host: {
         name: hostName,
         avatar: hostAvatar,
@@ -40,7 +30,7 @@ class OfferScreen extends PureComponent {
       }
     } = offer;
 
-    return (
+    offerInfo = (
       <main className="page__main page__main--property">
         <section className="property">
           <div className="property__gallery-container container">
@@ -126,7 +116,7 @@ class OfferScreen extends PureComponent {
               <ReviewsList
                 reviews={reviews}
                 displayReviewForm={authorizationStatus === AuthorizationStatus.AUTH}
-                onReviewFormSubmit={this.handleReviewFormSubmit}
+                offerId={id}
               />
             </div>
           </div>
@@ -152,18 +142,13 @@ class OfferScreen extends PureComponent {
     );
   }
 
-  render() {
-    const {offer, nearestOffers, reviews} = this.props;
-    const offerInfo = offer && nearestOffers && reviews ? this.renderOffer() : null;
-
-    return (
-      <div className="page">
-        <MainHeader />
-        {offerInfo}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="page">
+      <MainHeader />
+      {offerInfo}
+    </div>
+  );
+};
 
 OfferScreen.propTypes = {
   offer: offerPropType,
@@ -177,11 +162,5 @@ const mapStateToProps = (state) => ({
   authorizationStatus: state.USER.authorizationStatus,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  postReview(offerId, review, callback) {
-    dispatch(AsyncActionCreator.postReview(offerId, review, callback));
-  }
-});
-
 export {OfferScreen};
-export default connect(mapStateToProps, mapDispatchToProps)(withOfferDetails(OfferScreen));
+export default connect(mapStateToProps)(withOfferDetails(OfferScreen));

@@ -40,16 +40,22 @@ export const AsyncActionCreator = {
     return (dispatch, _getState, api) => (
       api.setFavorite(offerId, isFavorite)
         .then((offer) => dispatch(ActionCreator.updateFavoriteOffer(offer.id, offer.isFavorite)))
+        .catch(() => {})
     );
   },
 
-  postReview(offerId, {text, rating}, callback) {
+  postReview(offerId, {text, rating}, {successCallback, errorCallback}) {
     return (dispatch, _getState, api) => (
       api.postReview(offerId, text, rating)
         .then((reviews) => {
           dispatch(ActionCreator.updateOfferDetails(offerId, {reviews}));
-          if (callback) {
-            callback();
+          if (successCallback) {
+            successCallback();
+          }
+        })
+        .catch(() => {
+          if (errorCallback) {
+            errorCallback();
           }
         })
     );

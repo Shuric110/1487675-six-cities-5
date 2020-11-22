@@ -1,3 +1,7 @@
+export const MAX_REVIEWS_DISPLAYED = 10;
+export const MIN_REVIEW_TEXT_LENGTH = 50;
+export const MAX_REVIEW_TEXT_LENGTH = 300;
+
 export const OfferType = {
   APARTMENT: `apartment`,
   ROOM: `room`,

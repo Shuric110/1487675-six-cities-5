@@ -8,19 +8,18 @@ import thunk from "redux-thunk";
 import App from "./components/app/app";
 import reducer from "./store/root-reducer";
 import {redirect} from "./store/middleware/redirect";
+import browserHistory from "./browser-history";
 
 import {INITIAL_CITIES, DEFAULT_INITIAL_CITY} from "./static";
 import {ActionCreator} from "./store/action";
 import {AsyncActionCreator} from "./store/async-action";
-
-// import FAVORITES from "./mocks/favorites";
+import {AppRoute} from "./const";
 
 import Api from "./services/api";
 import ApiAdapter from "./services/api-adapter";
 
 const api = new Api();
 const apiAdapter = new ApiAdapter(api);
-
 
 const store = createStore(
     reducer,
@@ -30,10 +29,12 @@ const store = createStore(
     )
 );
 
+api.setOnUnauthorized(() => {
+  store.dispatch(ActionCreator.redirectToRoute(AppRoute.LOGIN, {returnUrl: browserHistory.location.pathname}));
+});
+
 store.dispatch(ActionCreator.initCities(INITIAL_CITIES));
 store.dispatch(ActionCreator.setCurrentCity(DEFAULT_INITIAL_CITY));
-
-// store.dispatch(ActionCreator.initFavorites(FAVORITES));
 
 
 Promise.all([
