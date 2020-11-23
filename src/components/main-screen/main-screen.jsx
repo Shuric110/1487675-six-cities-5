@@ -6,6 +6,7 @@ import BasicOffersList from "../offers-list/offers-list";
 import GeoMap from "../geo-map/geo-map";
 import CitiesMenu from "../cities-menu/cities-menu";
 import SortSelect from "../sort-select/sort-select";
+import OffersEmpty from "../offers-empty/offers-empty";
 import withActiveOffer from "../../hocs/with-active-offer/with-active-offer";
 
 import {offerPropType, cityPropType} from "../../props";
@@ -42,31 +43,35 @@ const MainScreen = (props) => {
         </div>
       </header>
 
-      <main className="page__main page__main--index">
+      <main className={`page__main page__main--index ${offers.length === 0 ? `page__main--index-empty` : ``}`}>
         <h1 className="visually-hidden">Cities</h1>
         <CitiesMenu />
         <div className="cities">
-          <div className="cities__places-container container">
-            <section className="cities__places places">
-              <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{offers.length} places to stay in {cityName}</b>
-              <SortSelect />
+          {offers.length > 0 ? (
+            <div className="cities__places-container container">
+              <section className="cities__places places">
+                <h2 className="visually-hidden">Places</h2>
+                <b className="places__found">{offers.length} places to stay in {cityName}</b>
+                <SortSelect />
 
-              <OffersList
-                listClassName="cities__places-list"
-                itemClassName="cities__place-card"
-                offers={offers}
-              />
+                <OffersList
+                  listClassName="cities__places-list"
+                  itemClassName="cities__place-card"
+                  offers={offers}
+                />
 
-            </section>
-            <div className="cities__right-section">
-              <GeoMap
-                className="cities__map"
-                mapCenter={cityCoordinates}
-                offers={offers}
-              />
+              </section>
+              <div className="cities__right-section">
+                <GeoMap
+                  className="cities__map"
+                  mapCenter={cityCoordinates}
+                  offers={offers}
+                />
+              </div>
             </div>
-          </div>
+          ) : (
+            <OffersEmpty />
+          )}
         </div>
       </main>
     </div>
