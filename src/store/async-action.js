@@ -1,5 +1,9 @@
 import {ActionCreator} from "./action";
 import {AuthorizationStatus, AppRoute} from "../const";
+import {HttpCode} from "../services/api";
+
+const formatErrorMessage = (text, error) =>
+  `${text} (${error.response && error.response.data && error.response.data.error ? error.response.data.error : error.message})`;
 
 export const AsyncActionCreator = {
   fetchHotelsAndCities() {
@@ -18,6 +22,11 @@ export const AsyncActionCreator = {
         .then((favorites) => {
           dispatch(ActionCreator.initFavorites(favorites));
         })
+        .catch((err) => {
+          if (!err.response || err.response.status !== HttpCode.UNAUTHORIZED) {
+            dispatch(ActionCreator.showMessage(formatErrorMessage(`Error quering favorites`, err)));
+          }
+        })
     );
   },
 
@@ -32,6 +41,11 @@ export const AsyncActionCreator = {
       ])
       .then(([offer, nearestOffers, reviews]) => {
         dispatch(ActionCreator.updateOfferDetails(offerId, {offer, nearestOffers, reviews}));
+      })
+      .catch((err) => {
+        if (!err.response || err.response.status !== HttpCode.UNAUTHORIZED) {
+          dispatch(ActionCreator.showMessage(formatErrorMessage(`Error quering offer details`, err)));
+        }
       });
     };
   },
@@ -40,7 +54,11 @@ export const AsyncActionCreator = {
     return (dispatch, _getState, api) => (
       api.setFavorite(offerId, isFavorite)
         .then((offer) => dispatch(ActionCreator.updateFavoriteOffer(offer.id, offer.isFavorite)))
-        .catch(() => {})
+        .catch((err) => {
+          if (!err.response || err.response.status !== HttpCode.UNAUTHORIZED) {
+            dispatch(ActionCreator.showMessage(formatErrorMessage(`Error adding or removing favorite`, err)));
+          }
+        })
     );
   },
 
@@ -53,7 +71,10 @@ export const AsyncActionCreator = {
             successCallback();
           }
         })
-        .catch(() => {
+        .catch((err) => {
+          if (!err.response || err.response.status !== HttpCode.UNAUTHORIZED) {
+            dispatch(ActionCreator.showMessage(formatErrorMessage(`Error posting the comment`, err)));
+          }
           if (errorCallback) {
             errorCallback();
           }
@@ -65,6 +86,9 @@ export const AsyncActionCreator = {
     return (dispatch, _getState, api) => (
       api.checkAuthorization()
         .then((authInfo) => dispatch(ActionCreator.updateAuthorization(authInfo ? AuthorizationStatus.AUTH : AuthorizationStatus.NO_AUTH, authInfo)))
+        .catch((err) => {
+          dispatch(ActionCreator.showMessage(formatErrorMessage(`Error quering authorization data`, err)));
+        })
     );
   },
 
@@ -73,6 +97,9 @@ export const AsyncActionCreator = {
       api.login(email, password)
         .then((authInfo) => dispatch(ActionCreator.updateAuthorization(AuthorizationStatus.AUTH, authInfo)))
         .then(() => dispatch(ActionCreator.redirectToRoute(returnUrl || AppRoute.ROOT)))
+        .catch((err) => {
+          dispatch(ActionCreator.showMessage(formatErrorMessage(`Error logging in`, err)));
+        })
     );
   },
 

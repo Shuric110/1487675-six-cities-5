@@ -15,6 +15,10 @@ export const ActionType = {
   UPDATE_AUTHORIZATION: `UPDATE_AUTHORIZATION`,
 
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
+
+  SHOW_MESSAGE: `SHOW_MESSAGE`,
+  FADEOUT_MESSAGE: `FADEOUT_MESSAGE`,
+  REMOVE_MESSAGE: `REMOVE_MESSAGE`,
 };
 
 export const ActionCreator = {
@@ -76,5 +80,20 @@ export const ActionCreator = {
   updateOfferDetails: (offerId, details) => ({
     type: ActionType.UPDATE_OFFER_DETAILS,
     payload: {offerId, details},
+  }),
+
+  showMessage: (text) => ({
+    type: ActionType.SHOW_MESSAGE,
+    payload: {text},
+  }),
+
+  fadeoutMessage: (id) => ({
+    type: ActionType.FADEOUT_MESSAGE,
+    payload: {id},
+  }),
+
+  removeMessage: (id) => ({
+    type: ActionType.REMOVE_MESSAGE,
+    payload: {id},
   }),
 };

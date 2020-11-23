@@ -2,6 +2,9 @@ export const MAX_REVIEWS_DISPLAYED = 10;
 export const MIN_REVIEW_TEXT_LENGTH = 50;
 export const MAX_REVIEW_TEXT_LENGTH = 300;
 
+export const MESSAGE_SHOW_TIME = 3000; // in ms
+export const MESSAGE_FADEOUT_TIME = 1000; // in ms
+
 export const OfferType = {
   APARTMENT: `apartment`,
   ROOM: `room`,

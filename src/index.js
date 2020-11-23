@@ -7,8 +7,9 @@ import thunk from "redux-thunk";
 
 import App from "./components/app/app";
 import reducer from "./store/root-reducer";
-import {redirect} from "./store/middleware/redirect";
 import browserHistory from "./browser-history";
+import {redirect} from "./store/middleware/redirect";
+import {messages} from "./store/middleware/messages";
 
 import {INITIAL_CITIES, DEFAULT_INITIAL_CITY} from "./static";
 import {ActionCreator} from "./store/action";
@@ -25,7 +26,8 @@ const store = createStore(
     reducer,
     composeWithDevTools(
         applyMiddleware(thunk.withExtraArgument(apiAdapter)),
-        applyMiddleware(redirect)
+        applyMiddleware(redirect),
+        applyMiddleware(messages)
     )
 );
 

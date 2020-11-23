@@ -38,7 +38,7 @@ export default class Api {
   _handleFailure(err) {
     const {response} = err;
 
-    if (response.status === HttpCode.UNAUTHORIZED) {
+    if (response && response.status === HttpCode.UNAUTHORIZED) {
       if (!err.response.config.__isCheckAuthorization && this._onUnauthorized) {
         this._onUnauthorized();
       }

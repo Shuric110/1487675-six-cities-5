@@ -155,7 +155,6 @@ OfferScreen.propTypes = {
   nearestOffers: PropTypes.arrayOf(offerPropType.isRequired),
   reviews: PropTypes.arrayOf(reviewPropType.isRequired),
   authorizationStatus: authorizationStatusPropType,
-  postReview: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
