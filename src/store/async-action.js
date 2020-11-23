@@ -96,6 +96,11 @@ export const AsyncActionCreator = {
     return (dispatch, _getState, api) => (
       api.login(email, password)
         .then((authInfo) => dispatch(ActionCreator.updateAuthorization(AuthorizationStatus.AUTH, authInfo)))
+        // Перезапрос загруженных данных
+        .then(() => dispatch(AsyncActionCreator.fetchHotelsAndCities()))
+        .then(() => dispatch(dispatch(ActionCreator.initFavorites(null))))
+        .then(() => dispatch(dispatch(ActionCreator.initOfferDetails(null))))
+        // Переход на обратный адрес
         .then(() => dispatch(ActionCreator.redirectToRoute(returnUrl || AppRoute.ROOT)))
         .catch((err) => {
           dispatch(ActionCreator.showMessage(formatErrorMessage(`Error logging in`, err)));

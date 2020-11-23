@@ -14,7 +14,7 @@ import {messages} from "./store/middleware/messages";
 import {INITIAL_CITIES, DEFAULT_INITIAL_CITY} from "./static";
 import {ActionCreator} from "./store/action";
 import {AsyncActionCreator} from "./store/async-action";
-import {AppRoute} from "./const";
+import {AuthorizationStatus, AppRoute} from "./const";
 
 import Api from "./services/api";
 import ApiAdapter from "./services/api-adapter";
@@ -32,6 +32,7 @@ const store = createStore(
 );
 
 api.setOnUnauthorized(() => {
+  store.dispatch(ActionCreator.updateAuthorization(AuthorizationStatus.NO_AUTH, null));
   store.dispatch(ActionCreator.redirectToRoute(AppRoute.LOGIN, {returnUrl: browserHistory.location.pathname}));
 });
 
