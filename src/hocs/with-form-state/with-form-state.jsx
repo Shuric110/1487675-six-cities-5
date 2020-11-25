@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 
-const withFormState = (Component, initialState) => {
+const withFormState = (initialState) => (Component) => {
   class WithFormState extends PureComponent {
     constructor(props) {
       super(props);
