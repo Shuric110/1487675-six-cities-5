@@ -1,0 +1,583 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render FavoritesScreen FavoritesScreen for empty list renders correctly 1`] = `
+<div
+  className="page"
+>
+  <MainHeader />
+  <main
+    className="page__main page__main--favorites"
+  >
+    <div
+      className="page__favorites-container container"
+    >
+      <section
+        className="favorites"
+      >
+        <h1
+          className="favorites__title"
+        >
+          Saved listing
+        </h1>
+        <ul
+          className="favorites__list"
+        >
+          <section
+            className="favorites favorites--empty"
+          >
+            <h1
+              className="visually-hidden"
+            >
+              Favorites (empty)
+            </h1>
+            <div
+              className="favorites__status-wrapper"
+            >
+              <b
+                className="favorites__status"
+              >
+                Nothing yet saved.
+              </b>
+              <p
+                className="favorites__status-description"
+              >
+                Save properties to narrow down search or plan yor future trips.
+              </p>
+            </div>
+          </section>
+        </ul>
+      </section>
+    </div>
+  </main>
+  <footer
+    className="footer container"
+  >
+    <a
+      className="footer__logo-link"
+      href="main.html"
+    >
+      <img
+        alt="6 cities logo"
+        className="footer__logo"
+        height="33"
+        src="img/logo.svg"
+        width="64"
+      />
+    </a>
+  </footer>
+</div>
+`;
+
+exports[`Render FavoritesScreen FavoritesScreen for non-empty list renders correctly 1`] = `
+<div
+  className="page"
+>
+  <MainHeader />
+  <main
+    className="page__main page__main--favorites"
+  >
+    <div
+      className="page__favorites-container container"
+    >
+      <section
+        className="favorites"
+      >
+        <h1
+          className="favorites__title"
+        >
+          Saved listing
+        </h1>
+        <ul
+          className="favorites__list"
+        >
+          <li
+            className="favorites__locations-items"
+          >
+            <div
+              className="favorites__locations locations locations--current"
+            >
+              <div
+                className="locations__item"
+              >
+                <a
+                  className="locations__item-link"
+                  href="#"
+                >
+                  <span>
+                    Paris
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div
+              className="favorites__places"
+            >
+              <article
+                className="favorites__card place-card"
+              >
+                <div
+                  className="favorites__image-wrapper place-card__image-wrapper"
+                >
+                  <a
+                    href="/offer/1"
+                    onClick={[Function]}
+                  >
+                    <img
+                      alt="Place image"
+                      className="place-card__image"
+                      height="110"
+                      src="/img/room.jpg"
+                      width="150"
+                    />
+                  </a>
+                </div>
+                <div
+                  className="favorites__card-info place-card__info"
+                >
+                  <div
+                    className="place-card__price-wrapper"
+                  >
+                    <div
+                      className="place-card__price"
+                    >
+                      <b
+                        className="place-card__price-value"
+                      >
+                        €
+                        80
+                      </b>
+                      <span
+                        className="place-card__price-text"
+                      >
+                        / night
+                      </span>
+                    </div>
+                    <BookmarkButton
+                      baseClassName="place-card__bookmark-button"
+                      offer={
+                        Object {
+                          "bedrooms": 1,
+                          "city": Object {
+                            "coordinates": Object {
+                              "latitude": 48.8606146,
+                              "longitude": 2.3354553,
+                            },
+                            "id": 1,
+                            "name": "Paris",
+                            "zoom": 12,
+                          },
+                          "coordinates": Object {
+                            "latitude": 52.369553943508,
+                            "longitude": 4.85309666406198,
+                          },
+                          "description": "Excellent choice for travelers, offering many helpful amenities designed to enhance your stay.",
+                          "features": Array [
+                            "Wi-Fi",
+                          ],
+                          "host": Object {
+                            "avatar": "/img/avatar-angelina.jpg",
+                            "isSuper": true,
+                            "name": "Angelina",
+                          },
+                          "id": 1,
+                          "isFavorite": true,
+                          "isPremium": false,
+                          "mapZoom": 12,
+                          "maxAdults": 2,
+                          "nightlyCost": 80,
+                          "pictures": Array [
+                            "/img/room.jpg",
+                          ],
+                          "placePicture": "/img/room.jpg",
+                          "rating": 4.2,
+                          "title": "Wood and stone place",
+                          "type": "room",
+                        }
+                      }
+                    >
+                      <svg
+                        className="place-card__bookmark-icon"
+                        height="19"
+                        width="18"
+                      >
+                        <use
+                          xlinkHref="#icon-bookmark"
+                        />
+                      </svg>
+                      <span
+                        className="visually-hidden"
+                      >
+                        In bookmarks
+                      </span>
+                    </BookmarkButton>
+                  </div>
+                  <div
+                    className="place-card__rating rating"
+                  >
+                    <div
+                      className="place-card__stars rating__stars"
+                    >
+                      <span
+                        style={
+                          Object {
+                            "width": "80%",
+                          }
+                        }
+                      />
+                      <span
+                        className="visually-hidden"
+                      >
+                        Rating
+                      </span>
+                    </div>
+                  </div>
+                  <h2
+                    className="place-card__name"
+                  >
+                    <a
+                      href="#"
+                    >
+                      Wood and stone place
+                    </a>
+                  </h2>
+                  <p
+                    className="place-card__type"
+                  >
+                    Private Room
+                  </p>
+                </div>
+              </article>
+              <article
+                className="favorites__card place-card"
+              >
+                <div
+                  className="place-card__mark"
+                >
+                  <span>
+                    Premium
+                  </span>
+                </div>
+                <div
+                  className="favorites__image-wrapper place-card__image-wrapper"
+                >
+                  <a
+                    href="/offer/2"
+                    onClick={[Function]}
+                  >
+                    <img
+                      alt="Place image"
+                      className="place-card__image"
+                      height="110"
+                      src="/img/studio-01.jpg"
+                      width="150"
+                    />
+                  </a>
+                </div>
+                <div
+                  className="favorites__card-info place-card__info"
+                >
+                  <div
+                    className="place-card__price-wrapper"
+                  >
+                    <div
+                      className="place-card__price"
+                    >
+                      <b
+                        className="place-card__price-value"
+                      >
+                        €
+                        80
+                      </b>
+                      <span
+                        className="place-card__price-text"
+                      >
+                        / night
+                      </span>
+                    </div>
+                    <BookmarkButton
+                      baseClassName="place-card__bookmark-button"
+                      offer={
+                        Object {
+                          "bedrooms": 1,
+                          "city": Object {
+                            "coordinates": Object {
+                              "latitude": 48.8606146,
+                              "longitude": 2.3354553,
+                            },
+                            "id": 1,
+                            "name": "Paris",
+                            "zoom": 12,
+                          },
+                          "coordinates": Object {
+                            "latitude": 52.369553943508,
+                            "longitude": 4.85309666406198,
+                          },
+                          "description": "Excellent choice for travelers, offering many helpful amenities designed to enhance your stay.",
+                          "features": Array [
+                            "Wi-Fi",
+                            "Washing machine",
+                            "Cable TV",
+                            "Fridge",
+                          ],
+                          "host": Object {
+                            "avatar": "/img/avatar-angelina.jpg",
+                            "isSuper": true,
+                            "name": "Angelina",
+                          },
+                          "id": 2,
+                          "isFavorite": true,
+                          "isPremium": true,
+                          "mapZoom": 12,
+                          "maxAdults": 2,
+                          "nightlyCost": 80,
+                          "pictures": Array [
+                            "/img/apartment-01.jpg",
+                            "/img/apartment-02.jpg",
+                          ],
+                          "placePicture": "/img/studio-01.jpg",
+                          "rating": 4.2,
+                          "title": "Wood and stone place",
+                          "type": "room",
+                        }
+                      }
+                    >
+                      <svg
+                        className="place-card__bookmark-icon"
+                        height="19"
+                        width="18"
+                      >
+                        <use
+                          xlinkHref="#icon-bookmark"
+                        />
+                      </svg>
+                      <span
+                        className="visually-hidden"
+                      >
+                        In bookmarks
+                      </span>
+                    </BookmarkButton>
+                  </div>
+                  <div
+                    className="place-card__rating rating"
+                  >
+                    <div
+                      className="place-card__stars rating__stars"
+                    >
+                      <span
+                        style={
+                          Object {
+                            "width": "80%",
+                          }
+                        }
+                      />
+                      <span
+                        className="visually-hidden"
+                      >
+                        Rating
+                      </span>
+                    </div>
+                  </div>
+                  <h2
+                    className="place-card__name"
+                  >
+                    <a
+                      href="#"
+                    >
+                      Wood and stone place
+                    </a>
+                  </h2>
+                  <p
+                    className="place-card__type"
+                  >
+                    Private Room
+                  </p>
+                </div>
+              </article>
+            </div>
+          </li>
+          <li
+            className="favorites__locations-items"
+          >
+            <div
+              className="favorites__locations locations locations--current"
+            >
+              <div
+                className="locations__item"
+              >
+                <a
+                  className="locations__item-link"
+                  href="#"
+                >
+                  <span>
+                    Amsterdam
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div
+              className="favorites__places"
+            >
+              <article
+                className="favorites__card place-card"
+              >
+                <div
+                  className="favorites__image-wrapper place-card__image-wrapper"
+                >
+                  <a
+                    href="/offer/3"
+                    onClick={[Function]}
+                  >
+                    <img
+                      alt="Place image"
+                      className="place-card__image"
+                      height="110"
+                      src="/img/apartment-01.jpg"
+                      width="150"
+                    />
+                  </a>
+                </div>
+                <div
+                  className="favorites__card-info place-card__info"
+                >
+                  <div
+                    className="place-card__price-wrapper"
+                  >
+                    <div
+                      className="place-card__price"
+                    >
+                      <b
+                        className="place-card__price-value"
+                      >
+                        €
+                        132
+                      </b>
+                      <span
+                        className="place-card__price-text"
+                      >
+                        / night
+                      </span>
+                    </div>
+                    <BookmarkButton
+                      baseClassName="place-card__bookmark-button"
+                      offer={
+                        Object {
+                          "bedrooms": 3,
+                          "city": Object {
+                            "coordinates": Object {
+                              "latitude": 48.8606146,
+                              "longitude": 2.3354553,
+                            },
+                            "id": 2,
+                            "name": "Amsterdam",
+                            "zoom": 12,
+                          },
+                          "coordinates": Object {
+                            "latitude": 52.3909553943508,
+                            "longitude": 4.929309666406198,
+                          },
+                          "description": "For travelers visiting Amsterdam, Canal View Prinsengracht is an excellent choice for rest and rejuvenation.
+                  Well-known for its family-friendly environment and proximity to great restaurants and attractions, Canal View Prinsengracht makes it easy to enjoy the best of Amsterdam.",
+                          "features": Array [
+                            "Washing machine",
+                            "Towels",
+                            "Heating",
+                          ],
+                          "host": Object {
+                            "avatar": "/img/avatar-max.jpg",
+                            "isSuper": false,
+                            "name": "Max",
+                          },
+                          "id": 3,
+                          "isFavorite": true,
+                          "isPremium": false,
+                          "mapZoom": 12,
+                          "maxAdults": 5,
+                          "nightlyCost": 132,
+                          "pictures": Array [
+                            "/img/apartment-03.jpg",
+                            "/img/studio-01.jpg",
+                            "/img/apartment-01.jpg",
+                          ],
+                          "placePicture": "/img/apartment-01.jpg",
+                          "rating": 4,
+                          "title": "Canal View Prinsengracht",
+                          "type": "apartment",
+                        }
+                      }
+                    >
+                      <svg
+                        className="place-card__bookmark-icon"
+                        height="19"
+                        width="18"
+                      >
+                        <use
+                          xlinkHref="#icon-bookmark"
+                        />
+                      </svg>
+                      <span
+                        className="visually-hidden"
+                      >
+                        In bookmarks
+                      </span>
+                    </BookmarkButton>
+                  </div>
+                  <div
+                    className="place-card__rating rating"
+                  >
+                    <div
+                      className="place-card__stars rating__stars"
+                    >
+                      <span
+                        style={
+                          Object {
+                            "width": "80%",
+                          }
+                        }
+                      />
+                      <span
+                        className="visually-hidden"
+                      >
+                        Rating
+                      </span>
+                    </div>
+                  </div>
+                  <h2
+                    className="place-card__name"
+                  >
+                    <a
+                      href="#"
+                    >
+                      Canal View Prinsengracht
+                    </a>
+                  </h2>
+                  <p
+                    className="place-card__type"
+                  >
+                    Apartment
+                  </p>
+                </div>
+              </article>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </main>
+  <footer
+    className="footer container"
+  >
+    <a
+      className="footer__logo-link"
+      href="main.html"
+    >
+      <img
+        alt="6 cities logo"
+        className="footer__logo"
+        height="33"
+        src="img/logo.svg"
+        width="64"
+      />
+    </a>
+  </footer>
+</div>
+`;

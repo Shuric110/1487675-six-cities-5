@@ -1,0 +1,1569 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render OfferScreen OfferScreen for offer variant 1 for authorized user renders correctly 1`] = `
+<div
+  className="page"
+>
+  <MainHeader />
+  <main
+    className="page__main page__main--property"
+  >
+    <section
+      className="property"
+    >
+      <div
+        className="property__gallery-container container"
+      >
+        <div
+          className="property__gallery"
+        >
+          <div
+            className="property__image-wrapper"
+          >
+            <img
+              alt="Photo studio"
+              className="property__image"
+              src="/img/room.jpg"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="property__container container"
+      >
+        <div
+          className="property__wrapper"
+        >
+          <div
+            className="property__name-wrapper"
+          >
+            <h1
+              className="property__name"
+            >
+              Wood and stone place
+            </h1>
+            <BookmarkButton
+              baseClassName="property__bookmark-button"
+              offer={
+                Object {
+                  "bedrooms": 1,
+                  "city": Object {
+                    "coordinates": Object {
+                      "latitude": 48.8606146,
+                      "longitude": 2.3354553,
+                    },
+                    "id": 1,
+                    "name": "Paris",
+                    "zoom": 12,
+                  },
+                  "coordinates": Object {
+                    "latitude": 52.369553943508,
+                    "longitude": 4.85309666406198,
+                  },
+                  "description": "Excellent choice for travelers, offering many helpful amenities designed to enhance your stay.",
+                  "features": Array [
+                    "Wi-Fi",
+                  ],
+                  "host": Object {
+                    "avatar": "/img/avatar-angelina.jpg",
+                    "isSuper": true,
+                    "name": "Angelina",
+                  },
+                  "id": 1,
+                  "isFavorite": true,
+                  "isPremium": false,
+                  "mapZoom": 12,
+                  "maxAdults": 2,
+                  "nightlyCost": 80,
+                  "pictures": Array [
+                    "/img/room.jpg",
+                  ],
+                  "placePicture": "/img/room.jpg",
+                  "rating": 4.2,
+                  "title": "Wood and stone place",
+                  "type": "room",
+                }
+              }
+            >
+              <svg
+                className="place-card__bookmark-icon"
+                height="33"
+                width="31"
+              >
+                <use
+                  xlinkHref="#icon-bookmark"
+                />
+              </svg>
+              <span
+                className="visually-hidden"
+              >
+                To bookmarks
+              </span>
+            </BookmarkButton>
+          </div>
+          <div
+            className="property__rating rating"
+          >
+            <div
+              className="property__stars rating__stars"
+            >
+              <span
+                style={
+                  Object {
+                    "width": "80%",
+                  }
+                }
+              />
+              <span
+                className="visually-hidden"
+              >
+                Rating
+              </span>
+            </div>
+            <span
+              className="property__rating-value rating__value"
+            >
+              4.2
+            </span>
+          </div>
+          <ul
+            className="property__features"
+          >
+            <li
+              className="property__feature property__feature--entire"
+            >
+              Private Room
+            </li>
+            <li
+              className="property__feature property__feature--bedrooms"
+            >
+              1
+               
+              Bedroom
+            </li>
+            <li
+              className="property__feature property__feature--adults"
+            >
+              Max 
+              2
+               adults
+            </li>
+          </ul>
+          <div
+            className="property__price"
+          >
+            <b
+              className="property__price-value"
+            >
+              €
+              80
+            </b>
+            <span
+              className="property__price-text"
+            >
+               night
+            </span>
+          </div>
+          <div
+            className="property__inside"
+          >
+            <h2
+              className="property__inside-title"
+            >
+              What's inside
+            </h2>
+            <ul
+              className="property__inside-list"
+            >
+              <li
+                className="property__inside-item"
+              >
+                Wi-Fi
+              </li>
+            </ul>
+          </div>
+          <div
+            className="property__host"
+          >
+            <h2
+              className="property__host-title"
+            >
+              Meet the host
+            </h2>
+            <div
+              className="property__host-user user"
+            >
+              <div
+                className="property__avatar-wrapper user__avatar-wrapper property__avatar-wrapper--pro"
+              >
+                <img
+                  alt="Host avatar"
+                  className="property__avatar user__avatar"
+                  height="74"
+                  src="/img/avatar-angelina.jpg"
+                  width="74"
+                />
+              </div>
+              <span
+                className="property__user-name"
+              >
+                Angelina
+              </span>
+            </div>
+            <div
+              className="property__description"
+            >
+              <p
+                className="property__text"
+              >
+                Excellent choice for travelers, offering many helpful amenities designed to enhance your stay.
+              </p>
+            </div>
+          </div>
+          <section
+            className="property__reviews reviews"
+          >
+            <h2
+              className="reviews__title"
+            >
+              Reviews · 
+              <span
+                className="reviews__amount"
+              >
+                2
+              </span>
+            </h2>
+            <ul
+              className="reviews__list"
+            >
+              <li
+                className="reviews__item"
+              >
+                <div
+                  className="reviews__user user"
+                >
+                  <div
+                    className="reviews__avatar-wrapper user__avatar-wrapper"
+                  >
+                    <img
+                      alt="Reviews avatar"
+                      className="reviews__avatar user__avatar"
+                      height="54"
+                      src="/img/avatar-angelina.jpg"
+                      width="54"
+                    />
+                  </div>
+                  <span
+                    className="reviews__user-name"
+                  >
+                    Angelina
+                  </span>
+                </div>
+                <div
+                  className="reviews__info"
+                >
+                  <div
+                    className="reviews__rating rating"
+                  >
+                    <div
+                      className="reviews__stars rating__stars"
+                    >
+                      <span
+                        style={
+                          Object {
+                            "width": "80%",
+                          }
+                        }
+                      />
+                      <span
+                        className="visually-hidden"
+                      >
+                        Rating
+                      </span>
+                    </div>
+                  </div>
+                  <p
+                    className="reviews__text"
+                  >
+                    We enjoyed our stay in the hotel. It was a very cozy atmosphere.
+                  </p>
+                  <time
+                    className="reviews__time"
+                    dateTime="2020-10-17"
+                  >
+                    October 2020
+                  </time>
+                </div>
+              </li>
+              <li
+                className="reviews__item"
+              >
+                <div
+                  className="reviews__user user"
+                >
+                  <div
+                    className="reviews__avatar-wrapper user__avatar-wrapper"
+                  >
+                    <img
+                      alt="Reviews avatar"
+                      className="reviews__avatar user__avatar"
+                      height="54"
+                      src="/img/avatar-max.jpg"
+                      width="54"
+                    />
+                  </div>
+                  <span
+                    className="reviews__user-name"
+                  >
+                    Max
+                  </span>
+                </div>
+                <div
+                  className="reviews__info"
+                >
+                  <div
+                    className="reviews__rating rating"
+                  >
+                    <div
+                      className="reviews__stars rating__stars"
+                    >
+                      <span
+                        style={
+                          Object {
+                            "width": "20%",
+                          }
+                        }
+                      />
+                      <span
+                        className="visually-hidden"
+                      >
+                        Rating
+                      </span>
+                    </div>
+                  </div>
+                  <p
+                    className="reviews__text"
+                  >
+                    There were roaches in the closet, several crawling the wall, several came from behind the mirror, and to top it off, found some dead ones in the refrigerator.
+                  </p>
+                  <time
+                    className="reviews__time"
+                    dateTime="2019-11-19"
+                  >
+                    November 2019
+                  </time>
+                </div>
+              </li>
+            </ul>
+            <ReviewForm
+              offerId={1}
+            />
+          </section>
+        </div>
+      </div>
+      <GeoMap
+        className="property__map"
+        mapCenter={
+          Object {
+            "latitude": 48.8606146,
+            "longitude": 2.3354553,
+          }
+        }
+        offers={
+          Array [
+            Object {
+              "bedrooms": 1,
+              "city": Object {
+                "coordinates": Object {
+                  "latitude": 48.8606146,
+                  "longitude": 2.3354553,
+                },
+                "id": 1,
+                "name": "Paris",
+                "zoom": 12,
+              },
+              "coordinates": Object {
+                "latitude": 52.369553943508,
+                "longitude": 4.85309666406198,
+              },
+              "description": "Excellent choice for travelers, offering many helpful amenities designed to enhance your stay.",
+              "features": Array [
+                "Wi-Fi",
+              ],
+              "host": Object {
+                "avatar": "/img/avatar-angelina.jpg",
+                "isSuper": true,
+                "name": "Angelina",
+              },
+              "id": 1,
+              "isFavorite": true,
+              "isPremium": false,
+              "mapZoom": 12,
+              "maxAdults": 2,
+              "nightlyCost": 80,
+              "pictures": Array [
+                "/img/room.jpg",
+              ],
+              "placePicture": "/img/room.jpg",
+              "rating": 4.2,
+              "title": "Wood and stone place",
+              "type": "room",
+            },
+            Object {
+              "bedrooms": 3,
+              "city": Object {
+                "coordinates": Object {
+                  "latitude": 48.8606146,
+                  "longitude": 2.3354553,
+                },
+                "id": 1,
+                "name": "Paris",
+                "zoom": 12,
+              },
+              "coordinates": Object {
+                "latitude": 52.3909553943508,
+                "longitude": 4.929309666406198,
+              },
+              "description": "For travelers visiting Amsterdam, Canal View Prinsengracht is an excellent choice for rest and rejuvenation.
+                  Well-known for its family-friendly environment and proximity to great restaurants and attractions, Canal View Prinsengracht makes it easy to enjoy the best of Amsterdam.",
+              "features": Array [
+                "Washing machine",
+                "Towels",
+                "Heating",
+              ],
+              "host": Object {
+                "avatar": "/img/avatar-max.jpg",
+                "isSuper": false,
+                "name": "Max",
+              },
+              "id": 2,
+              "isFavorite": false,
+              "isPremium": true,
+              "mapZoom": 12,
+              "maxAdults": 5,
+              "nightlyCost": 132,
+              "pictures": Array [
+                "/img/apartment-03.jpg",
+                "/img/studio-01.jpg",
+                "/img/apartment-01.jpg",
+              ],
+              "placePicture": "/img/apartment-01.jpg",
+              "rating": 3,
+              "title": "Canal View Prinsengracht",
+              "type": "apartment",
+            },
+          ]
+        }
+      />
+    </section>
+    <div
+      className="container"
+    >
+      <section
+        className="near-places places"
+      >
+        <h2
+          className="near-places__title"
+        >
+          Other places in the neighbourhood
+        </h2>
+        <div
+          className="near-places__list places__list tabs__content"
+        >
+          <article
+            className="near-places__card place-card"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            <div
+              className="place-card__image-wrapper"
+            >
+              <a
+                href="/offer/1"
+                onClick={[Function]}
+              >
+                <img
+                  alt="Place image"
+                  className="place-card__image"
+                  height="200"
+                  src="/img/room.jpg"
+                  width="260"
+                />
+              </a>
+            </div>
+            <div
+              className="place-card__info"
+            >
+              <div
+                className="place-card__price-wrapper"
+              >
+                <div
+                  className="place-card__price"
+                >
+                  <b
+                    className="place-card__price-value"
+                  >
+                    €
+                    80
+                  </b>
+                  <span
+                    className="place-card__price-text"
+                  >
+                    / night
+                  </span>
+                </div>
+                <BookmarkButton
+                  baseClassName="place-card__bookmark-button"
+                  offer={
+                    Object {
+                      "bedrooms": 1,
+                      "city": Object {
+                        "coordinates": Object {
+                          "latitude": 48.8606146,
+                          "longitude": 2.3354553,
+                        },
+                        "id": 1,
+                        "name": "Paris",
+                        "zoom": 12,
+                      },
+                      "coordinates": Object {
+                        "latitude": 52.369553943508,
+                        "longitude": 4.85309666406198,
+                      },
+                      "description": "Excellent choice for travelers, offering many helpful amenities designed to enhance your stay.",
+                      "features": Array [
+                        "Wi-Fi",
+                      ],
+                      "host": Object {
+                        "avatar": "/img/avatar-angelina.jpg",
+                        "isSuper": true,
+                        "name": "Angelina",
+                      },
+                      "id": 1,
+                      "isFavorite": true,
+                      "isPremium": false,
+                      "mapZoom": 12,
+                      "maxAdults": 2,
+                      "nightlyCost": 80,
+                      "pictures": Array [
+                        "/img/room.jpg",
+                      ],
+                      "placePicture": "/img/room.jpg",
+                      "rating": 4.2,
+                      "title": "Wood and stone place",
+                      "type": "room",
+                    }
+                  }
+                >
+                  <svg
+                    className="place-card__bookmark-icon"
+                    height="19"
+                    width="18"
+                  >
+                    <use
+                      xlinkHref="#icon-bookmark"
+                    />
+                  </svg>
+                  <span
+                    className="visually-hidden"
+                  >
+                    To bookmarks
+                  </span>
+                </BookmarkButton>
+              </div>
+              <div
+                className="place-card__rating rating"
+              >
+                <div
+                  className="place-card__stars rating__stars"
+                >
+                  <span
+                    style={
+                      Object {
+                        "width": "80%",
+                      }
+                    }
+                  />
+                  <span
+                    className="visually-hidden"
+                  >
+                    Rating
+                  </span>
+                </div>
+              </div>
+              <h2
+                className="place-card__name"
+              >
+                <a
+                  href="#"
+                >
+                  Wood and stone place
+                </a>
+              </h2>
+              <p
+                className="place-card__type"
+              >
+                Private Room
+              </p>
+            </div>
+          </article>
+          <article
+            className="near-places__card place-card"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            <div
+              className="place-card__mark"
+            >
+              <span>
+                Premium
+              </span>
+            </div>
+            <div
+              className="place-card__image-wrapper"
+            >
+              <a
+                href="/offer/2"
+                onClick={[Function]}
+              >
+                <img
+                  alt="Place image"
+                  className="place-card__image"
+                  height="200"
+                  src="/img/apartment-01.jpg"
+                  width="260"
+                />
+              </a>
+            </div>
+            <div
+              className="place-card__info"
+            >
+              <div
+                className="place-card__price-wrapper"
+              >
+                <div
+                  className="place-card__price"
+                >
+                  <b
+                    className="place-card__price-value"
+                  >
+                    €
+                    132
+                  </b>
+                  <span
+                    className="place-card__price-text"
+                  >
+                    / night
+                  </span>
+                </div>
+                <BookmarkButton
+                  baseClassName="place-card__bookmark-button"
+                  offer={
+                    Object {
+                      "bedrooms": 3,
+                      "city": Object {
+                        "coordinates": Object {
+                          "latitude": 48.8606146,
+                          "longitude": 2.3354553,
+                        },
+                        "id": 1,
+                        "name": "Paris",
+                        "zoom": 12,
+                      },
+                      "coordinates": Object {
+                        "latitude": 52.3909553943508,
+                        "longitude": 4.929309666406198,
+                      },
+                      "description": "For travelers visiting Amsterdam, Canal View Prinsengracht is an excellent choice for rest and rejuvenation.
+                  Well-known for its family-friendly environment and proximity to great restaurants and attractions, Canal View Prinsengracht makes it easy to enjoy the best of Amsterdam.",
+                      "features": Array [
+                        "Washing machine",
+                        "Towels",
+                        "Heating",
+                      ],
+                      "host": Object {
+                        "avatar": "/img/avatar-max.jpg",
+                        "isSuper": false,
+                        "name": "Max",
+                      },
+                      "id": 2,
+                      "isFavorite": false,
+                      "isPremium": true,
+                      "mapZoom": 12,
+                      "maxAdults": 5,
+                      "nightlyCost": 132,
+                      "pictures": Array [
+                        "/img/apartment-03.jpg",
+                        "/img/studio-01.jpg",
+                        "/img/apartment-01.jpg",
+                      ],
+                      "placePicture": "/img/apartment-01.jpg",
+                      "rating": 3,
+                      "title": "Canal View Prinsengracht",
+                      "type": "apartment",
+                    }
+                  }
+                >
+                  <svg
+                    className="place-card__bookmark-icon"
+                    height="19"
+                    width="18"
+                  >
+                    <use
+                      xlinkHref="#icon-bookmark"
+                    />
+                  </svg>
+                  <span
+                    className="visually-hidden"
+                  >
+                    To bookmarks
+                  </span>
+                </BookmarkButton>
+              </div>
+              <div
+                className="place-card__rating rating"
+              >
+                <div
+                  className="place-card__stars rating__stars"
+                >
+                  <span
+                    style={
+                      Object {
+                        "width": "60%",
+                      }
+                    }
+                  />
+                  <span
+                    className="visually-hidden"
+                  >
+                    Rating
+                  </span>
+                </div>
+              </div>
+              <h2
+                className="place-card__name"
+              >
+                <a
+                  href="#"
+                >
+                  Canal View Prinsengracht
+                </a>
+              </h2>
+              <p
+                className="place-card__type"
+              >
+                Apartment
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+`;
+
+exports[`Render OfferScreen OfferScreen for offer variant 2 for unauthorized user renders correctly 1`] = `
+<div
+  className="page"
+>
+  <MainHeader />
+  <main
+    className="page__main page__main--property"
+  >
+    <section
+      className="property"
+    >
+      <div
+        className="property__gallery-container container"
+      >
+        <div
+          className="property__gallery"
+        >
+          <div
+            className="property__image-wrapper"
+          >
+            <img
+              alt="Photo studio"
+              className="property__image"
+              src="/img/apartment-03.jpg"
+            />
+          </div>
+          <div
+            className="property__image-wrapper"
+          >
+            <img
+              alt="Photo studio"
+              className="property__image"
+              src="/img/studio-01.jpg"
+            />
+          </div>
+          <div
+            className="property__image-wrapper"
+          >
+            <img
+              alt="Photo studio"
+              className="property__image"
+              src="/img/apartment-01.jpg"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="property__container container"
+      >
+        <div
+          className="property__wrapper"
+        >
+          <div
+            className="property__mark"
+          >
+            <span>
+              Premium
+            </span>
+          </div>
+          <div
+            className="property__name-wrapper"
+          >
+            <h1
+              className="property__name"
+            >
+              Canal View Prinsengracht
+            </h1>
+            <BookmarkButton
+              baseClassName="property__bookmark-button"
+              offer={
+                Object {
+                  "bedrooms": 3,
+                  "city": Object {
+                    "coordinates": Object {
+                      "latitude": 48.8606146,
+                      "longitude": 2.3354553,
+                    },
+                    "id": 1,
+                    "name": "Paris",
+                    "zoom": 12,
+                  },
+                  "coordinates": Object {
+                    "latitude": 52.3909553943508,
+                    "longitude": 4.929309666406198,
+                  },
+                  "description": "For travelers visiting Amsterdam, Canal View Prinsengracht is an excellent choice for rest and rejuvenation.
+                  Well-known for its family-friendly environment and proximity to great restaurants and attractions, Canal View Prinsengracht makes it easy to enjoy the best of Amsterdam.",
+                  "features": Array [
+                    "Washing machine",
+                    "Towels",
+                    "Heating",
+                  ],
+                  "host": Object {
+                    "avatar": "/img/avatar-max.jpg",
+                    "isSuper": false,
+                    "name": "Max",
+                  },
+                  "id": 2,
+                  "isFavorite": false,
+                  "isPremium": true,
+                  "mapZoom": 12,
+                  "maxAdults": 5,
+                  "nightlyCost": 132,
+                  "pictures": Array [
+                    "/img/apartment-03.jpg",
+                    "/img/studio-01.jpg",
+                    "/img/apartment-01.jpg",
+                  ],
+                  "placePicture": "/img/apartment-01.jpg",
+                  "rating": 3,
+                  "title": "Canal View Prinsengracht",
+                  "type": "apartment",
+                }
+              }
+            >
+              <svg
+                className="place-card__bookmark-icon"
+                height="33"
+                width="31"
+              >
+                <use
+                  xlinkHref="#icon-bookmark"
+                />
+              </svg>
+              <span
+                className="visually-hidden"
+              >
+                To bookmarks
+              </span>
+            </BookmarkButton>
+          </div>
+          <div
+            className="property__rating rating"
+          >
+            <div
+              className="property__stars rating__stars"
+            >
+              <span
+                style={
+                  Object {
+                    "width": "60%",
+                  }
+                }
+              />
+              <span
+                className="visually-hidden"
+              >
+                Rating
+              </span>
+            </div>
+            <span
+              className="property__rating-value rating__value"
+            >
+              3
+            </span>
+          </div>
+          <ul
+            className="property__features"
+          >
+            <li
+              className="property__feature property__feature--entire"
+            >
+              Apartment
+            </li>
+            <li
+              className="property__feature property__feature--bedrooms"
+            >
+              3
+               
+              Bedrooms
+            </li>
+            <li
+              className="property__feature property__feature--adults"
+            >
+              Max 
+              5
+               adults
+            </li>
+          </ul>
+          <div
+            className="property__price"
+          >
+            <b
+              className="property__price-value"
+            >
+              €
+              132
+            </b>
+            <span
+              className="property__price-text"
+            >
+               night
+            </span>
+          </div>
+          <div
+            className="property__inside"
+          >
+            <h2
+              className="property__inside-title"
+            >
+              What's inside
+            </h2>
+            <ul
+              className="property__inside-list"
+            >
+              <li
+                className="property__inside-item"
+              >
+                Washing machine
+              </li>
+              <li
+                className="property__inside-item"
+              >
+                Towels
+              </li>
+              <li
+                className="property__inside-item"
+              >
+                Heating
+              </li>
+            </ul>
+          </div>
+          <div
+            className="property__host"
+          >
+            <h2
+              className="property__host-title"
+            >
+              Meet the host
+            </h2>
+            <div
+              className="property__host-user user"
+            >
+              <div
+                className="property__avatar-wrapper user__avatar-wrapper"
+              >
+                <img
+                  alt="Host avatar"
+                  className="property__avatar user__avatar"
+                  height="74"
+                  src="/img/avatar-max.jpg"
+                  width="74"
+                />
+              </div>
+              <span
+                className="property__user-name"
+              >
+                Max
+              </span>
+            </div>
+            <div
+              className="property__description"
+            >
+              <p
+                className="property__text"
+              >
+                For travelers visiting Amsterdam, Canal View Prinsengracht is an excellent choice for rest and rejuvenation.
+              </p>
+              <p
+                className="property__text"
+              >
+                                  Well-known for its family-friendly environment and proximity to great restaurants and attractions, Canal View Prinsengracht makes it easy to enjoy the best of Amsterdam.
+              </p>
+            </div>
+          </div>
+          <section
+            className="property__reviews reviews"
+          >
+            <h2
+              className="reviews__title"
+            >
+              Reviews · 
+              <span
+                className="reviews__amount"
+              >
+                2
+              </span>
+            </h2>
+            <ul
+              className="reviews__list"
+            >
+              <li
+                className="reviews__item"
+              >
+                <div
+                  className="reviews__user user"
+                >
+                  <div
+                    className="reviews__avatar-wrapper user__avatar-wrapper"
+                  >
+                    <img
+                      alt="Reviews avatar"
+                      className="reviews__avatar user__avatar"
+                      height="54"
+                      src="/img/avatar-angelina.jpg"
+                      width="54"
+                    />
+                  </div>
+                  <span
+                    className="reviews__user-name"
+                  >
+                    Angelina
+                  </span>
+                </div>
+                <div
+                  className="reviews__info"
+                >
+                  <div
+                    className="reviews__rating rating"
+                  >
+                    <div
+                      className="reviews__stars rating__stars"
+                    >
+                      <span
+                        style={
+                          Object {
+                            "width": "80%",
+                          }
+                        }
+                      />
+                      <span
+                        className="visually-hidden"
+                      >
+                        Rating
+                      </span>
+                    </div>
+                  </div>
+                  <p
+                    className="reviews__text"
+                  >
+                    We enjoyed our stay in the hotel. It was a very cozy atmosphere.
+                  </p>
+                  <time
+                    className="reviews__time"
+                    dateTime="2020-10-17"
+                  >
+                    October 2020
+                  </time>
+                </div>
+              </li>
+              <li
+                className="reviews__item"
+              >
+                <div
+                  className="reviews__user user"
+                >
+                  <div
+                    className="reviews__avatar-wrapper user__avatar-wrapper"
+                  >
+                    <img
+                      alt="Reviews avatar"
+                      className="reviews__avatar user__avatar"
+                      height="54"
+                      src="/img/avatar-max.jpg"
+                      width="54"
+                    />
+                  </div>
+                  <span
+                    className="reviews__user-name"
+                  >
+                    Max
+                  </span>
+                </div>
+                <div
+                  className="reviews__info"
+                >
+                  <div
+                    className="reviews__rating rating"
+                  >
+                    <div
+                      className="reviews__stars rating__stars"
+                    >
+                      <span
+                        style={
+                          Object {
+                            "width": "20%",
+                          }
+                        }
+                      />
+                      <span
+                        className="visually-hidden"
+                      >
+                        Rating
+                      </span>
+                    </div>
+                  </div>
+                  <p
+                    className="reviews__text"
+                  >
+                    There were roaches in the closet, several crawling the wall, several came from behind the mirror, and to top it off, found some dead ones in the refrigerator.
+                  </p>
+                  <time
+                    className="reviews__time"
+                    dateTime="2019-11-19"
+                  >
+                    November 2019
+                  </time>
+                </div>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+      <GeoMap
+        className="property__map"
+        mapCenter={
+          Object {
+            "latitude": 48.8606146,
+            "longitude": 2.3354553,
+          }
+        }
+        offers={
+          Array [
+            Object {
+              "bedrooms": 1,
+              "city": Object {
+                "coordinates": Object {
+                  "latitude": 48.8606146,
+                  "longitude": 2.3354553,
+                },
+                "id": 1,
+                "name": "Paris",
+                "zoom": 12,
+              },
+              "coordinates": Object {
+                "latitude": 52.369553943508,
+                "longitude": 4.85309666406198,
+              },
+              "description": "Excellent choice for travelers, offering many helpful amenities designed to enhance your stay.",
+              "features": Array [
+                "Wi-Fi",
+              ],
+              "host": Object {
+                "avatar": "/img/avatar-angelina.jpg",
+                "isSuper": true,
+                "name": "Angelina",
+              },
+              "id": 1,
+              "isFavorite": true,
+              "isPremium": false,
+              "mapZoom": 12,
+              "maxAdults": 2,
+              "nightlyCost": 80,
+              "pictures": Array [
+                "/img/room.jpg",
+              ],
+              "placePicture": "/img/room.jpg",
+              "rating": 4.2,
+              "title": "Wood and stone place",
+              "type": "room",
+            },
+            Object {
+              "bedrooms": 3,
+              "city": Object {
+                "coordinates": Object {
+                  "latitude": 48.8606146,
+                  "longitude": 2.3354553,
+                },
+                "id": 1,
+                "name": "Paris",
+                "zoom": 12,
+              },
+              "coordinates": Object {
+                "latitude": 52.3909553943508,
+                "longitude": 4.929309666406198,
+              },
+              "description": "For travelers visiting Amsterdam, Canal View Prinsengracht is an excellent choice for rest and rejuvenation.
+                  Well-known for its family-friendly environment and proximity to great restaurants and attractions, Canal View Prinsengracht makes it easy to enjoy the best of Amsterdam.",
+              "features": Array [
+                "Washing machine",
+                "Towels",
+                "Heating",
+              ],
+              "host": Object {
+                "avatar": "/img/avatar-max.jpg",
+                "isSuper": false,
+                "name": "Max",
+              },
+              "id": 2,
+              "isFavorite": false,
+              "isPremium": true,
+              "mapZoom": 12,
+              "maxAdults": 5,
+              "nightlyCost": 132,
+              "pictures": Array [
+                "/img/apartment-03.jpg",
+                "/img/studio-01.jpg",
+                "/img/apartment-01.jpg",
+              ],
+              "placePicture": "/img/apartment-01.jpg",
+              "rating": 3,
+              "title": "Canal View Prinsengracht",
+              "type": "apartment",
+            },
+          ]
+        }
+      />
+    </section>
+    <div
+      className="container"
+    >
+      <section
+        className="near-places places"
+      >
+        <h2
+          className="near-places__title"
+        >
+          Other places in the neighbourhood
+        </h2>
+        <div
+          className="near-places__list places__list tabs__content"
+        >
+          <article
+            className="near-places__card place-card"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            <div
+              className="place-card__image-wrapper"
+            >
+              <a
+                href="/offer/1"
+                onClick={[Function]}
+              >
+                <img
+                  alt="Place image"
+                  className="place-card__image"
+                  height="200"
+                  src="/img/room.jpg"
+                  width="260"
+                />
+              </a>
+            </div>
+            <div
+              className="place-card__info"
+            >
+              <div
+                className="place-card__price-wrapper"
+              >
+                <div
+                  className="place-card__price"
+                >
+                  <b
+                    className="place-card__price-value"
+                  >
+                    €
+                    80
+                  </b>
+                  <span
+                    className="place-card__price-text"
+                  >
+                    / night
+                  </span>
+                </div>
+                <BookmarkButton
+                  baseClassName="place-card__bookmark-button"
+                  offer={
+                    Object {
+                      "bedrooms": 1,
+                      "city": Object {
+                        "coordinates": Object {
+                          "latitude": 48.8606146,
+                          "longitude": 2.3354553,
+                        },
+                        "id": 1,
+                        "name": "Paris",
+                        "zoom": 12,
+                      },
+                      "coordinates": Object {
+                        "latitude": 52.369553943508,
+                        "longitude": 4.85309666406198,
+                      },
+                      "description": "Excellent choice for travelers, offering many helpful amenities designed to enhance your stay.",
+                      "features": Array [
+                        "Wi-Fi",
+                      ],
+                      "host": Object {
+                        "avatar": "/img/avatar-angelina.jpg",
+                        "isSuper": true,
+                        "name": "Angelina",
+                      },
+                      "id": 1,
+                      "isFavorite": true,
+                      "isPremium": false,
+                      "mapZoom": 12,
+                      "maxAdults": 2,
+                      "nightlyCost": 80,
+                      "pictures": Array [
+                        "/img/room.jpg",
+                      ],
+                      "placePicture": "/img/room.jpg",
+                      "rating": 4.2,
+                      "title": "Wood and stone place",
+                      "type": "room",
+                    }
+                  }
+                >
+                  <svg
+                    className="place-card__bookmark-icon"
+                    height="19"
+                    width="18"
+                  >
+                    <use
+                      xlinkHref="#icon-bookmark"
+                    />
+                  </svg>
+                  <span
+                    className="visually-hidden"
+                  >
+                    To bookmarks
+                  </span>
+                </BookmarkButton>
+              </div>
+              <div
+                className="place-card__rating rating"
+              >
+                <div
+                  className="place-card__stars rating__stars"
+                >
+                  <span
+                    style={
+                      Object {
+                        "width": "80%",
+                      }
+                    }
+                  />
+                  <span
+                    className="visually-hidden"
+                  >
+                    Rating
+                  </span>
+                </div>
+              </div>
+              <h2
+                className="place-card__name"
+              >
+                <a
+                  href="#"
+                >
+                  Wood and stone place
+                </a>
+              </h2>
+              <p
+                className="place-card__type"
+              >
+                Private Room
+              </p>
+            </div>
+          </article>
+          <article
+            className="near-places__card place-card"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            <div
+              className="place-card__mark"
+            >
+              <span>
+                Premium
+              </span>
+            </div>
+            <div
+              className="place-card__image-wrapper"
+            >
+              <a
+                href="/offer/2"
+                onClick={[Function]}
+              >
+                <img
+                  alt="Place image"
+                  className="place-card__image"
+                  height="200"
+                  src="/img/apartment-01.jpg"
+                  width="260"
+                />
+              </a>
+            </div>
+            <div
+              className="place-card__info"
+            >
+              <div
+                className="place-card__price-wrapper"
+              >
+                <div
+                  className="place-card__price"
+                >
+                  <b
+                    className="place-card__price-value"
+                  >
+                    €
+                    132
+                  </b>
+                  <span
+                    className="place-card__price-text"
+                  >
+                    / night
+                  </span>
+                </div>
+                <BookmarkButton
+                  baseClassName="place-card__bookmark-button"
+                  offer={
+                    Object {
+                      "bedrooms": 3,
+                      "city": Object {
+                        "coordinates": Object {
+                          "latitude": 48.8606146,
+                          "longitude": 2.3354553,
+                        },
+                        "id": 1,
+                        "name": "Paris",
+                        "zoom": 12,
+                      },
+                      "coordinates": Object {
+                        "latitude": 52.3909553943508,
+                        "longitude": 4.929309666406198,
+                      },
+                      "description": "For travelers visiting Amsterdam, Canal View Prinsengracht is an excellent choice for rest and rejuvenation.
+                  Well-known for its family-friendly environment and proximity to great restaurants and attractions, Canal View Prinsengracht makes it easy to enjoy the best of Amsterdam.",
+                      "features": Array [
+                        "Washing machine",
+                        "Towels",
+                        "Heating",
+                      ],
+                      "host": Object {
+                        "avatar": "/img/avatar-max.jpg",
+                        "isSuper": false,
+                        "name": "Max",
+                      },
+                      "id": 2,
+                      "isFavorite": false,
+                      "isPremium": true,
+                      "mapZoom": 12,
+                      "maxAdults": 5,
+                      "nightlyCost": 132,
+                      "pictures": Array [
+                        "/img/apartment-03.jpg",
+                        "/img/studio-01.jpg",
+                        "/img/apartment-01.jpg",
+                      ],
+                      "placePicture": "/img/apartment-01.jpg",
+                      "rating": 3,
+                      "title": "Canal View Prinsengracht",
+                      "type": "apartment",
+                    }
+                  }
+                >
+                  <svg
+                    className="place-card__bookmark-icon"
+                    height="19"
+                    width="18"
+                  >
+                    <use
+                      xlinkHref="#icon-bookmark"
+                    />
+                  </svg>
+                  <span
+                    className="visually-hidden"
+                  >
+                    To bookmarks
+                  </span>
+                </BookmarkButton>
+              </div>
+              <div
+                className="place-card__rating rating"
+              >
+                <div
+                  className="place-card__stars rating__stars"
+                >
+                  <span
+                    style={
+                      Object {
+                        "width": "60%",
+                      }
+                    }
+                  />
+                  <span
+                    className="visually-hidden"
+                  >
+                    Rating
+                  </span>
+                </div>
+              </div>
+              <h2
+                className="place-card__name"
+              >
+                <a
+                  href="#"
+                >
+                  Canal View Prinsengracht
+                </a>
+              </h2>
+              <p
+                className="place-card__type"
+              >
+                Apartment
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+`;

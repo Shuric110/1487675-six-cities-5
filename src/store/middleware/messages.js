@@ -4,7 +4,7 @@ import {MESSAGE_SHOW_TIME, MESSAGE_FADEOUT_TIME} from "../../const";
 import {ActionCreator} from "../action";
 
 const idSequence = {
-  _currentId: 0,
+  _currentId: 1,
 
   getNextId() {
     return this._currentId++;

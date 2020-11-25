@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render App App for root path renders correctly 1`] = `<MainScreen />`;
