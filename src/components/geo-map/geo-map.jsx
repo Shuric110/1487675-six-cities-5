@@ -1,4 +1,4 @@
-import React, {PureComponent, createRef} from "react";
+import React, {useState, useRef, useEffect, useMemo} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import leaflet from "leaflet";
@@ -37,138 +37,99 @@ const makeIcon = (iconDefinition) => {
   });
 };
 
-class GeoMap extends PureComponent {
-  constructor(props) {
-    super(props);
+const GeoMap = (props) => {
+  const {className, mapCenter, zoom, offers, activeOffer} = props;
 
-    this._mapContainerRef = createRef();
-    this._markers = {};
-    this._currentActiveOffer = null;
-  }
+  const offerIcon = useMemo(() => makeIcon(OFFER_ICON_DEFINITION), []);
+  const activeOfferIcon = useMemo(() => makeIcon(ACTIVE_OFFER_ICON_DEFINITION), []);
 
-  componentDidMount() {
-    const {
-      mapCenter,
-      zoom
-    } = this.props;
+  const leafletMapRef = useRef(null);
+  const mapContainerRef = useRef(null);
 
-    const mapContainer = this._mapContainerRef.current;
-    if (!mapContainer) {
-      return;
-    }
+  const [mapViewState, setMapViewState] = useState({mapCenter, zoom});
+  const [mapMarkers, setMapMarkers] = useState({});
+  const [activeMapMarker, setActiveMapMarker] = useState(null);
 
-    this._offerIcon = makeIcon(OFFER_ICON_DEFINITION);
-    this._activeOfferIcon = makeIcon(ACTIVE_OFFER_ICON_DEFINITION);
 
-    this._map = leaflet.map(mapContainer, {
+  useEffect(() => {
+    // Инициализация компонента
+    leafletMapRef.current = leaflet.map(mapContainerRef.current, {
       center: Object.values(mapCenter),
       zoom: zoom || DEFAULT_ZOOM,
       zoomControl: false,
       marker: true
     });
 
-    this._mapCenter = mapCenter;
-    this._zoom = zoom;
-
     leaflet
       .tileLayer(TILE_LAYER_URL_TEMPLATE, {attribution: TILE_LAYER_ATTRIBUTION})
-      .addTo(this._map);
+      .addTo(leafletMapRef.current);
 
-    this.updateMap(true);
-  }
+    return () => {
+      // Деинициализация компонента
+      leafletMapRef.current.remove();
+    };
+  }, []);
 
-  componentWillUnmount() {
-    this._markers = {};
-    this._currentActiveOffer = null;
-    this._map.remove();
-  }
+  useEffect(() => {
+    // Обновление стейта
+    setMapViewState({mapCenter, zoom});
+  }, [mapCenter, zoom]);
 
-  setMapView(mapCenter, zoom) {
-    if (
-      this._zoom === zoom &&
-      this._mapCenter.latitude === mapCenter.latitude &&
-      this._mapCenter.longitude === mapCenter.longitude
-    ) {
-      return;
-    }
+  useEffect(() => {
+    // Установка видимой области карты
+    leafletMapRef.current.setView(Object.values(mapViewState.mapCenter), mapViewState.zoom || DEFAULT_ZOOM);
+  }, [mapViewState]);
 
-    this._mapCenter = mapCenter;
-    this._zoom = zoom;
-
-    this._map.setView(Object.values(mapCenter), zoom || DEFAULT_ZOOM);
-  }
-
-  updateMap(initializing) {
-    const {
-      mapCenter,
-      zoom,
-      offers,
-      activeOffer
-    } = this.props;
-
-    if (!initializing) {
-      this.setMapView(mapCenter, zoom);
-    }
-
-    const newMarkers = {};
+  useEffect(() => {
+    // Синхронизация маркеров
+    const newMapMarkers = {};
+    const oldMapMarkers = Object.assign({}, mapMarkers);
 
     if (offers) {
       offers.forEach(({id, coordinates}) => {
-        if (this._markers[id]) {
-          newMarkers[id] = this._markers[id];
-          this._markers[id] = false;
+        if (oldMapMarkers[id]) {
+          newMapMarkers[id] = oldMapMarkers[id];
+          oldMapMarkers[id] = false;
         } else {
-          const marker = leaflet.marker(Object.values(coordinates), {icon: this._offerIcon});
-          marker.addTo(this._map);
-          newMarkers[id] = marker;
+          const marker = leaflet.marker(Object.values(coordinates), {icon: offerIcon});
+          marker.addTo(leafletMapRef.current);
+          newMapMarkers[id] = marker;
         }
       });
     }
 
-    Object.values(this._markers).forEach((marker) => {
+    Object.values(oldMapMarkers).forEach((marker) => {
       if (marker) {
         marker.remove();
       }
     });
 
-    this._markers = newMarkers;
+    setMapMarkers(newMapMarkers);
 
-    if (
-      (this._currentActiveOffer ? this._currentActiveOffer.id : null) !==
-      (activeOffer ? activeOffer.id : null)
-    ) {
-      if (this._currentActiveOffer) {
-        const activeMarker = this._markers[this._currentActiveOffer.id];
-        if (activeMarker) {
-          activeMarker.setIcon(this._offerIcon);
-        }
-        this._currentActiveOffer = null;
-      }
+  }, [offers]);
 
-      if (activeOffer) {
-        this._currentActiveOffer = activeOffer;
-        const activeMarker = this._markers[activeOffer.id];
-        if (activeMarker) {
-          activeMarker.setIcon(this._activeOfferIcon);
-        }
-      }
-    }
-  }
-
-  render() {
-    const {className} = this.props;
-
-    if (this._map) {
-      this.updateMap(false);
+  useEffect(() => {
+    // Подсветка маркера активного предложения
+    if (activeMapMarker) {
+      activeMapMarker.setIcon(offerIcon);
+      setActiveMapMarker(null);
     }
 
-    return (
-      <section
-        className={`${className} map`}
-        ref={this._mapContainerRef}
-      />);
-  }
-}
+    if (activeOffer) {
+      const newActiveMapMarker = mapMarkers[activeOffer.id];
+      if (newActiveMapMarker) {
+        newActiveMapMarker.setIcon(activeOfferIcon);
+        setActiveMapMarker(newActiveMapMarker);
+      }
+    }
+  }, [activeOffer]);
+
+  return (
+    <section
+      className={`${className} map`}
+      ref={mapContainerRef}
+    />);
+};
 
 GeoMap.propTypes = {
   className: PropTypes.string.isRequired,
