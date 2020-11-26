@@ -13,7 +13,7 @@ class OfferCard extends Component {
 
   render() {
     const {itemClassName, offer, onHover, onUnHover} = this.props;
-    const {id, pictures: [placePicture], isPremium, nightlyCost, title, type, rating} = offer;
+    const {id, placePicture, isPremium, nightlyCost, title, type, rating} = offer;
 
     return (
       <article className={`${itemClassName} place-card`}

@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 
 import {offerPropType} from "../../props";
 import OfferCard from "../offer-card/offer-card";
-import {sortOffers} from "../../offers";
+import {getSortedFilteredOffers} from "../../store/selectors";
 
 class OffersList extends PureComponent {
   componentWillUnmount() {
@@ -41,8 +41,8 @@ OffersList.propTypes = {
   clearActiveOffer: PropTypes.func,
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  offers: sortOffers(ownProps.offers, state.sortType),
+const mapStateToProps = (state) => ({
+  offers: getSortedFilteredOffers(state),
 });
 
 export {OffersList};

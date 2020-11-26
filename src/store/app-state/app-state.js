@@ -1,19 +1,14 @@
-import {extend} from "../util";
-import {ActionType} from "./action";
-import {SortType} from "../const";
-
-import CITIES from "../mocks/cities";
-import OFFERS from "../mocks/offers";
+import {extend} from "../../util";
+import {ActionType} from "../action";
+import {SortType} from "../../const";
 
 const initialState = {
-  currentCity: CITIES[0],
-  cities: CITIES,
-  offers: OFFERS,
+  currentCity: null,
   sortType: SortType.DEFAULT,
   activeOffer: null
 };
 
-const reducer = (state = initialState, action) => {
+const appState = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.SET_CURRENT_CITY:
       const {city} = action.payload;
@@ -38,9 +33,24 @@ const reducer = (state = initialState, action) => {
       return extend(state, {
         activeOffer: null,
       });
+
+    case ActionType.INIT_CITIES:
+      // При обновлении списка городов обновим активный город
+
+      if (!state.currentCity) {
+        return state;
+      }
+
+      const currentCityId = state.currentCity.id;
+      const {cities} = action.payload;
+
+      const currentCity = cities.find(({id}) => id === currentCityId);
+      return extend(state, {
+        currentCity,
+      });
   }
 
   return state;
 };
 
-export {reducer};
+export {appState};

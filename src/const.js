@@ -1,8 +1,8 @@
 export const OfferType = {
-  APARTMENT: `APARTMENT`,
-  ROOM: `ROOM`,
-  HOUSE: `HOUSE`,
-  HOTEL: `HOTEL`
+  APARTMENT: `apartment`,
+  ROOM: `room`,
+  HOUSE: `house`,
+  HOTEL: `hotel`
 };
 
 export const OFFER_TYPE_TITLES = {
