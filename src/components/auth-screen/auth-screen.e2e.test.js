@@ -11,6 +11,7 @@ jest.mock(`../main-header/main-header`, () => () => `MainHeader`);
 
 it(`Login should be performed on form submit`, () => {
   const handleSubmit = jest.fn();
+  const preventDefault = jest.fn();
 
   const wrapper = mount(
       <AuthScreen
@@ -22,7 +23,7 @@ it(`Login should be performed on form submit`, () => {
 
   wrapper.find(`input[name="email"]`).instance().value = `test@test.com`;
   wrapper.find(`input[name="password"]`).instance().value = `password123`;
-  wrapper.find(`form.login__form`).simulate(`submit`, {preventDefault: () => {}});
+  wrapper.find(`form.login__form`).simulate(`submit`, {preventDefault});
 
   expect(handleSubmit).toHaveBeenCalledTimes(1);
   expect(handleSubmit).toHaveBeenNthCalledWith(1, {
@@ -30,5 +31,6 @@ it(`Login should be performed on form submit`, () => {
     password: `password123`,
     returnUrl: `/return`
   });
+  expect(preventDefault).toHaveBeenCalledTimes(1);
 
 });
