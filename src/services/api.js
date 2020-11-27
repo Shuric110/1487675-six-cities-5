@@ -7,7 +7,7 @@ const HttpCode = {
   UNAUTHORIZED: 401
 };
 
-export const APIRoute = {
+const APIRoute = {
   HOTELS: `/hotels`,
   HOTELS_NEARBY: `/nearby`,
   FAVORITES: `/favorite`,
@@ -32,7 +32,7 @@ export default class Api {
   }
 
   _handleSuccess(response) {
-    return response;
+    return response.data;
   }
 
   _handleFailure(err) {

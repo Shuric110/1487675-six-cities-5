@@ -7,6 +7,10 @@ export const ActionType = {
   INIT_CITIES: `INIT_CITIES`,
   INIT_OFFERS: `INIT_OFFERS`,
   INIT_FAVORITES: `INIT_FAVORITES`,
+
+  UPDATE_AUTHORIZATION: `UPDATE_AUTHORIZATION`,
+
+  REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
 };
 
 export const ActionCreator = {
@@ -45,4 +49,13 @@ export const ActionCreator = {
     payload: {cities},
   }),
 
+  updateAuthorization: (status, authInfo) => ({
+    type: ActionType.UPDATE_AUTHORIZATION,
+    payload: {status, authInfo},
+  }),
+
+  redirectToRoute: (url) => ({
+    type: ActionType.REDIRECT_TO_ROUTE,
+    payload: url,
+  }),
 };

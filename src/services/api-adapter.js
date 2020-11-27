@@ -6,7 +6,21 @@ export default class ApiAdapter {
   getOffersAndCities(initialCities) {
     return this._api.getHotels()
       .then(
-          (response) => ApiAdapter.convertRemoteHotelsToLocalOffersAndCities(response.data, initialCities)
+          (hotels) => ApiAdapter.convertRemoteHotelsToLocalOffersAndCities(hotels, initialCities)
+      );
+  }
+
+  checkAuthorization() {
+    return this._api.checkAuthorization()
+      .then(
+          (authInfo) => authInfo ? ApiAdapter.convertRemoteAuthInfoToLocal(authInfo) : null
+      );
+  }
+
+  login(email, password) {
+    return this._api.login(email, password)
+      .then(
+          (authInfo) => authInfo ? ApiAdapter.convertRemoteAuthInfoToLocal(authInfo) : null
       );
   }
 
@@ -73,6 +87,16 @@ export default class ApiAdapter {
         avatar: remoteHotel.host.avatar_url,
         isSuper: remoteHotel.host.is_pro
       },
+    };
+  }
+
+  static convertRemoteAuthInfoToLocal(remoteAuthInfo) {
+    return {
+      id: remoteAuthInfo.id,
+      avatar: remoteAuthInfo.avatar_url,
+      email: remoteAuthInfo.email,
+      isPro: remoteAuthInfo.is_pro === `true`,
+      name: remoteAuthInfo.name
     };
   }
 }
