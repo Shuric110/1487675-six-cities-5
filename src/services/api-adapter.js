@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export default class ApiAdapter {
   constructor(api) {
     this._api = api;
@@ -22,6 +24,74 @@ export default class ApiAdapter {
       .then(
           (authInfo) => authInfo ? ApiAdapter.convertRemoteAuthInfoToLocal(authInfo) : null
       );
+  }
+
+  getOfferById(id) {
+    return this._api.getHotelById(id)
+      .then(
+          (hotel) => ApiAdapter.convertRemoteHotelToLocalOffer(hotel)
+      );
+  }
+
+  getNearestOffersById(id) {
+    return this._api.getNearbyHotelsById(id)
+      .then(
+          (hotels) => hotels.map((hotel) => ApiAdapter.convertRemoteHotelToLocalOffer(hotel))
+      );
+  }
+
+  getReviewsByOfferId(id) {
+    return this._api.getCommentsByHotelId(id)
+      .then(
+          (comments) => comments.map((comment) => ApiAdapter.convertRemoteCommentToLocalReview(comment))
+      );
+  }
+
+  postReview(offerId, text, rating) {
+    return this._api.postComment(offerId, text, rating)
+      .then(
+          (comments) => comments.map((comment) => ApiAdapter.convertRemoteCommentToLocalReview(comment))
+      );
+  }
+
+  setFavorite(offerId, isFavorite) {
+    return this._api.setFavorite(offerId, isFavorite ? 1 : 0)
+      .then(
+          (hotel) => ApiAdapter.convertRemoteHotelToLocalOffer(hotel)
+      );
+  }
+
+  getFavorites() {
+    return this._api.getFavorites()
+      .then(
+          (favorites) => ApiAdapter.convertRemoteFavoritesToLocal(favorites)
+      );
+  }
+
+  static convertRemoteFavoritesToLocal(favorites) {
+    const result = {};
+
+    favorites.forEach((hotel) => {
+      const offer = ApiAdapter.convertRemoteHotelToLocalOffer(hotel);
+      const cityName = offer.city.name;
+      if (!result[cityName]) {
+        result[cityName] = [];
+      }
+      result[cityName].push(offer);
+    });
+
+    return Object.entries(result).map(([city, offers]) => ({city, offers}));
+  }
+
+  static convertRemoteCommentToLocalReview(comment) {
+    return {
+      id: comment.id,
+      authorAvatar: comment.user.avatar_url,
+      authorName: comment.user.name,
+      rating: comment.rating,
+      date: moment(comment.date).toDate(),
+      text: comment.comment
+    };
   }
 
   static convertRemoteHotelsToLocalOffersAndCities(hotels, initialCities) {
@@ -73,6 +143,7 @@ export default class ApiAdapter {
       },
       mapZoom: remoteHotel.location.zoom,
       isPremium: remoteHotel.is_premium,
+      isFavorite: remoteHotel.is_favorite,
       nightlyCost: remoteHotel.price,
       title: remoteHotel.title,
       type: remoteHotel.type,
@@ -95,7 +166,7 @@ export default class ApiAdapter {
       id: remoteAuthInfo.id,
       avatar: remoteAuthInfo.avatar_url,
       email: remoteAuthInfo.email,
-      isPro: remoteAuthInfo.is_pro === `true`,
+      isPro: remoteAuthInfo.is_pro,
       name: remoteAuthInfo.name
     };
   }

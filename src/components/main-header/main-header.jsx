@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 import history from "../../browser-history";
 import {authorizationStatusPropType, authorizationInfoPropType} from "../../props";
 import {AppRoute, AuthorizationStatus} from "../../const.js";
+import Messages from "../messages/messages";
 
 const MainHeader = (props) => {
   const {isMainPage, authorizationStatus, authorizationInfo} = props;
@@ -19,11 +20,12 @@ const MainHeader = (props) => {
 
   return (
     <header className="header">
+      <Messages />
       <div className="container">
         <div className="header__wrapper">
           <div className="header__left">
             <Link to={AppRoute.ROOT} className={`header__logo-link ${isMainPage ? `header__logo-link--active` : ``}`}>
-              <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41" />
+              <img className="header__logo" src="/img/logo.svg" alt="6 cities logo" width="81" height="41" />
             </Link>
           </div>
 

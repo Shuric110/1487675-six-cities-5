@@ -3,14 +3,14 @@ import axios from "axios";
 const BACKEND_URL = `https://5.react.pages.academy/six-cities`;
 const REQUEST_TIMEOUT = 5000;
 
-const HttpCode = {
+export const HttpCode = {
   UNAUTHORIZED: 401
 };
 
 const APIRoute = {
   HOTELS: `/hotels`,
   HOTELS_NEARBY: `/nearby`,
-  FAVORITES: `/favorite`,
+  FAVORITE: `/favorite`,
   COMMENTS: `/comments`,
   LOGIN: `/login`,
 };
@@ -38,7 +38,7 @@ export default class Api {
   _handleFailure(err) {
     const {response} = err;
 
-    if (response.status === HttpCode.UNAUTHORIZED) {
+    if (response && response.status === HttpCode.UNAUTHORIZED) {
       if (!err.response.config.__isCheckAuthorization && this._onUnauthorized) {
         this._onUnauthorized();
       }
@@ -55,6 +55,30 @@ export default class Api {
 
   getHotels() {
     return this._httpClient.get(APIRoute.HOTELS);
+  }
+
+  getHotelById(id) {
+    return this._httpClient.get(`${APIRoute.HOTELS}/${id}`);
+  }
+
+  getNearbyHotelsById(id) {
+    return this._httpClient.get(`${APIRoute.HOTELS}/${id}${APIRoute.HOTELS_NEARBY}`);
+  }
+
+  getCommentsByHotelId(id) {
+    return this._httpClient.get(`${APIRoute.COMMENTS}/${id}`);
+  }
+
+  getFavorites() {
+    return this._httpClient.get(APIRoute.FAVORITE);
+  }
+
+  postComment(hotelId, comment, rating) {
+    return this._httpClient.post(`${APIRoute.COMMENTS}/${hotelId}`, {comment, rating});
+  }
+
+  setFavorite(hotelId, status) {
+    return this._httpClient.post(`${APIRoute.FAVORITE}/${hotelId}/${status}`);
   }
 
   checkAuthorization() {

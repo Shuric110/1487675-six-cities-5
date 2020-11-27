@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import {offerPropType} from "../../props";
 import {OFFER_TYPE_TITLES} from "../../const";
 import {ratingToPercent} from "../../util";
+import BookmarkButton from "../bookmark-button/bookmark-button";
 
 class OfferCard extends Component {
   shouldComponentUpdate(nextProps) {
@@ -40,12 +41,12 @@ class OfferCard extends Component {
               <b className="place-card__price-value">&euro;{nightlyCost}</b>
               <span className="place-card__price-text">&#47;&nbsp;night</span>
             </div>
-            <button className="place-card__bookmark-button button" type="button">
+            <BookmarkButton baseClassName="place-card__bookmark-button" offer={offer}>
               <svg className="place-card__bookmark-icon" width="18" height="19">
                 <use xlinkHref="#icon-bookmark"></use>
               </svg>
               <span className="visually-hidden">To bookmarks</span>
-            </button>
+            </BookmarkButton>
           </div>
           <div className="place-card__rating rating">
             <div className="place-card__stars rating__stars">

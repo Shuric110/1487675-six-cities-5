@@ -7,10 +7,18 @@ export const ActionType = {
   INIT_CITIES: `INIT_CITIES`,
   INIT_OFFERS: `INIT_OFFERS`,
   INIT_FAVORITES: `INIT_FAVORITES`,
+  UPDATE_FAVORITE_OFFER: `UPDATE_FAVORITE_OFFER`,
+
+  INIT_OFFER_DETAILS: `INIT_OFFER_DETAILS`,
+  UPDATE_OFFER_DETAILS: `UPDATE_OFFER_DETAILS`,
 
   UPDATE_AUTHORIZATION: `UPDATE_AUTHORIZATION`,
 
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
+
+  SHOW_MESSAGE: `SHOW_MESSAGE`,
+  FADEOUT_MESSAGE: `FADEOUT_MESSAGE`,
+  REMOVE_MESSAGE: `REMOVE_MESSAGE`,
 };
 
 export const ActionCreator = {
@@ -54,8 +62,38 @@ export const ActionCreator = {
     payload: {status, authInfo},
   }),
 
-  redirectToRoute: (url) => ({
+  redirectToRoute: (url, state) => ({
     type: ActionType.REDIRECT_TO_ROUTE,
-    payload: url,
+    payload: {url, state},
+  }),
+
+  updateFavoriteOffer: (id, isFavorite) => ({
+    type: ActionType.UPDATE_FAVORITE_OFFER,
+    payload: {id, isFavorite},
+  }),
+
+  initOfferDetails: (offerId) => ({
+    type: ActionType.INIT_OFFER_DETAILS,
+    payload: {offerId},
+  }),
+
+  updateOfferDetails: (offerId, details) => ({
+    type: ActionType.UPDATE_OFFER_DETAILS,
+    payload: {offerId, details},
+  }),
+
+  showMessage: (text) => ({
+    type: ActionType.SHOW_MESSAGE,
+    payload: {text},
+  }),
+
+  fadeoutMessage: (id) => ({
+    type: ActionType.FADEOUT_MESSAGE,
+    payload: {id},
+  }),
+
+  removeMessage: (id) => ({
+    type: ActionType.REMOVE_MESSAGE,
+    payload: {id},
   }),
 };
