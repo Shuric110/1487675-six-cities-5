@@ -53,6 +53,9 @@ class GeoMap extends PureComponent {
     } = this.props;
 
     const mapContainer = this._mapContainerRef.current;
+    if (!mapContainer) {
+      return;
+    }
 
     this._offerIcon = makeIcon(OFFER_ICON_DEFINITION);
     this._activeOfferIcon = makeIcon(ACTIVE_OFFER_ICON_DEFINITION);

@@ -7,19 +7,30 @@
     "build": "webpack --mode production",
     "start": "webpack-dev-server",
     "eslint": "eslint --ext .jsx --ext .js src/",
-    "test": "npm run eslint"
+    "test": "npm run eslint && npm run test.jest",
+    "test.jest": "jest"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css)$": "<rootDir>/src/__mocks__/styleMock.js"
+    }
   },
   "devDependencies": {
     "@babel/core": "7.8.7",
     "@babel/preset-env": "7.8.7",
     "@babel/preset-react": "7.8.3",
+    "axios-mock-adapter": "1.17.0",
     "babel-loader": "8.1.0",
     "css-loader": "5.0.0",
+    "enzyme": "3.11.0",
+    "enzyme-adapter-react-16": "1.15.5",
     "eslint": "5.13.0",
     "eslint-config-htmlacademy": "0.5.2",
     "eslint-plugin-react": "7.18.3",
     "file-loader": "6.1.1",
+    "jest": "25.1.0",
     "moment-locales-webpack-plugin": "1.2.0",
+    "react-test-renderer": "16.12.0",
     "redux-devtools-extension": "2.13.8",
     "style-loader": "2.0.0",
     "stylelint-config-htmlacademy": "0.1.4",

@@ -49,6 +49,10 @@ export default class Api {
     throw err;
   }
 
+  getHttpApi() {
+    return this._httpClient;
+  }
+
   setOnUnauthorized(onUnauthorized) {
     this._onUnauthorized = onUnauthorized;
   }

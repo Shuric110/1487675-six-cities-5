@@ -13,6 +13,11 @@ export const AsyncActionCreator = {
           dispatch(ActionCreator.initCities(cities));
           dispatch(ActionCreator.initOffers(offers));
         })
+        .catch((err) => {
+          if (!err.response || err.response.status !== HttpCode.UNAUTHORIZED) {
+            dispatch(ActionCreator.showMessage(formatErrorMessage(`Error quering offers`, err)));
+          }
+        })
     );
   },
 
@@ -34,7 +39,7 @@ export const AsyncActionCreator = {
     return (dispatch, getState, api) => {
       dispatch(ActionCreator.initOfferDetails(offerId));
 
-      Promise.all([
+      return Promise.all([
         api.getOfferById(offerId),
         api.getNearestOffersById(offerId),
         api.getReviewsByOfferId(offerId),
@@ -98,8 +103,8 @@ export const AsyncActionCreator = {
         .then((authInfo) => dispatch(ActionCreator.updateAuthorization(AuthorizationStatus.AUTH, authInfo)))
         // Перезапрос загруженных данных
         .then(() => dispatch(AsyncActionCreator.fetchHotelsAndCities()))
-        .then(() => dispatch(dispatch(ActionCreator.initFavorites(null))))
-        .then(() => dispatch(dispatch(ActionCreator.initOfferDetails(null))))
+        .then(() => dispatch(ActionCreator.initFavorites(null)))
+        .then(() => dispatch(ActionCreator.initOfferDetails(null)))
         // Переход на обратный адрес
         .then(() => dispatch(ActionCreator.redirectToRoute(returnUrl || AppRoute.ROOT)))
         .catch((err) => {

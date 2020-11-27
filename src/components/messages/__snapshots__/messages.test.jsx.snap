@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Messages Messages renders correctly 1`] = `
+<ul
+  className="app-messages"
+>
+  <li
+    className="app-messages__item app-messages__item--error app-messages__item--fadeout"
+  >
+    Message 1
+  </li>
+  <li
+    className="app-messages__item app-messages__item--error "
+  >
+    Message 2
+  </li>
+  <li
+    className="app-messages__item app-messages__item--error "
+  >
+    Message 3
+  </li>
+</ul>
+`;

@@ -9,9 +9,10 @@ const initialState = {
 const user = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.UPDATE_AUTHORIZATION:
+      const {status, authInfo} = action.payload;
       return Object.assign({}, state, {
-        authorizationStatus: action.payload.status,
-        authorizationInfo: action.payload.authInfo,
+        authorizationStatus: status,
+        authorizationInfo: authInfo,
       });
   }
 

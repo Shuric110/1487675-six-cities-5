@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render PrivateRoute PrivateRoute for authenticated user with children renders correctly 1`] = `"Inner content in children"`;
+
+exports[`Render PrivateRoute PrivateRoute for authenticated user with render prop renders correctly 1`] = `"Inner content in render prop"`;
+
+exports[`Render PrivateRoute PrivateRoute for unauthenticated user renders correctly 1`] = `null`;

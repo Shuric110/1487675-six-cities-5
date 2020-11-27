@@ -113,4 +113,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export {ReviewForm};
-export default connect(null, mapDispatchToProps)(withFormState(ReviewForm, initialState));
+export default connect(null, mapDispatchToProps)(withFormState(initialState)(ReviewForm));
