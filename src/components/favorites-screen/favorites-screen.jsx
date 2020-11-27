@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import PropTypes from "prop-types";
 
 import {favoritePropType} from "../../props";
-import {OFFER_TYPE_TITLES} from "../../const";
+import {OFFER_TYPE_TITLES, AppRoute} from "../../const";
 import {ratingToPercent} from "../../util";
 import MainHeader from "../main-header/main-header";
 import BookmarkButton from "../bookmark-button/bookmark-button";
@@ -97,9 +97,9 @@ const FavoritesScreen = (props) => {
         </div>
       </main>
       <footer className="footer container">
-        <a className="footer__logo-link" href="main.html">
+        <Link to={AppRoute.ROOT} className="footer__logo-link">
           <img className="footer__logo" src="img/logo.svg" alt="6 cities logo" width="64" height="33" />
-        </a>
+        </Link>
       </footer>
     </div>
   );

@@ -54,7 +54,8 @@ exports[`Render FavoritesScreen FavoritesScreen for empty list renders correctly
   >
     <a
       className="footer__logo-link"
-      href="main.html"
+      href="/"
+      onClick={[Function]}
     >
       <img
         alt="6 cities logo"
@@ -568,7 +569,8 @@ exports[`Render FavoritesScreen FavoritesScreen for non-empty list renders corre
   >
     <a
       className="footer__logo-link"
-      href="main.html"
+      href="/"
+      onClick={[Function]}
     >
       <img
         alt="6 cities logo"
