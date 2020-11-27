@@ -45,8 +45,8 @@ const GeoMap = (props) => {
 
   const leafletMapRef = useRef(null);
   const mapContainerRef = useRef(null);
+  const initialRunRef = useRef(true);
 
-  const [mapViewState, setMapViewState] = useState({mapCenter, zoom});
   const [mapMarkers, setMapMarkers] = useState({});
   const [activeMapMarker, setActiveMapMarker] = useState(null);
 
@@ -71,14 +71,11 @@ const GeoMap = (props) => {
   }, []);
 
   useEffect(() => {
-    // Обновление стейта
-    setMapViewState({mapCenter, zoom});
-  }, [mapCenter, zoom]);
-
-  useEffect(() => {
     // Установка видимой области карты
-    leafletMapRef.current.setView(Object.values(mapViewState.mapCenter), mapViewState.zoom || DEFAULT_ZOOM);
-  }, [mapViewState]);
+    if (!initialRunRef.curent) {
+      leafletMapRef.current.setView(Object.values(mapCenter), zoom || DEFAULT_ZOOM);
+    }
+  }, [mapCenter, zoom]);
 
   useEffect(() => {
     // Синхронизация маркеров
@@ -123,6 +120,11 @@ const GeoMap = (props) => {
       }
     }
   }, [activeOffer]);
+
+  useEffect(() => {
+    // Сброс флага начального запуска
+    initialRunRef.current = false;
+  }, []);
 
   return (
     <section

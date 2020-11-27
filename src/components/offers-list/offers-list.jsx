@@ -1,35 +1,35 @@
-import React, {PureComponent} from "react";
+import React, {useEffect} from "react";
 import PropTypes from "prop-types";
 
 import {offerPropType} from "../../props";
 import OfferCard from "../offer-card/offer-card";
 
-class OffersList extends PureComponent {
-  componentWillUnmount() {
-    const {clearActiveOffer} = this.props;
-    if (clearActiveOffer) {
-      clearActiveOffer(null);
-    }
-  }
+const OffersList = (props) => {
+  const {listClassName, itemClassName, offers, setActiveOffer, clearActiveOffer} = props;
 
-  render() {
-    const {listClassName, itemClassName, offers, setActiveOffer, clearActiveOffer} = this.props;
+  useEffect(() => {
+    return () => {
+      // Действие при размонтировании компонента
+      if (clearActiveOffer) {
+        clearActiveOffer(null);
+      }
+    };
+  }, []);
 
-    return (
-      <div className={`${listClassName} places__list tabs__content`}>
-        {offers.map((offer) => (
-          <OfferCard
-            key={offer.id}
-            itemClassName={itemClassName}
-            offer={offer}
-            onHover={() => setActiveOffer && setActiveOffer(offer)}
-            onUnHover={() => clearActiveOffer && clearActiveOffer(offer)}
-          />
-        ))}
-      </div>
-    );
-  }
-}
+  return (
+    <div className={`${listClassName} places__list tabs__content`}>
+      {offers.map((offer) => (
+        <OfferCard
+          key={offer.id}
+          itemClassName={itemClassName}
+          offer={offer}
+          onHover={() => setActiveOffer && setActiveOffer(offer)}
+          onUnHover={() => clearActiveOffer && clearActiveOffer(offer)}
+        />
+      ))}
+    </div>
+  );
+};
 
 OffersList.propTypes = {
   listClassName: PropTypes.string.isRequired,
